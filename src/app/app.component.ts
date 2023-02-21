@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dark-souls-angular';
+  messages: string[] = ['Mensaje 1', 'Mensaje 2', 'Mensaje 3'];
+  color: string = 'dato';
 }

@@ -1,0 +1,50 @@
+.notification {
+    padding: 20px 20px 20px 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 40%;
+    width: 300px;
+    height: auto;
+    z-index: 999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+    color: white;
+    border-radius: 5% 5% 5% 5%;
+}
+.red {
+    background-color: rgb(255, 75, 75);
+}
+.exito{
+    background-color: rgb(101, 179, 101);
+}
+.dato {
+    background-color: rgb(57, 47, 100);
+}
+.but {
+    background-color: cadetblue;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 45px 55%;
+    cursor: pointer;
+}
+.but:hover {
+    background-color: black;
+    color: white;
+}
+.titulo {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+.message {
+    text-align: justify;
+    font-size: 15px;
+}

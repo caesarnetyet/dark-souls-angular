@@ -1,0 +1,15 @@
+<div *ngIf="show" class="notification {{color}}">
+  <div >
+    <h1 class="titulo">
+      {{ title }}
+    </h1>
+    <hr>
+  </div>
+  <div>
+    <h2 class="message" *ngFor="let message of messages">
+      {{ message }}
+    </h2>
+  </div>
+  <hr>
+  <button class="but" (click)="changeShow()">Cerrar</button>
+</div>
