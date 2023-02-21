@@ -4,12 +4,15 @@ import { NotificationComponent } from './components/notification/notification.co
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { RegisterComponent } from './components/register/register.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    NotificationComponent
+    NotificationComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

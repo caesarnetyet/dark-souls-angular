@@ -1,10 +1,25 @@
-<nav class="flex justify-between text-white font-bold items-center gap-3 py-3 px-5 bg-slate-700">
+<nav class="flex justify-between text-white font-bold items-center gap-3 py-3 px-5 bg-slate-900">
   <h1>Dark Souls APP®</h1>
   <div class="flex gap-3">
     <a class="button" href="">Iniciar sesion</a>
     <a class="button" href="">Registrarse</a>
   </div>
 </nav>
-<button></button>
-<app-notification [messages]="messages" [color]="color"></app-notification>
-<router-outlet></router-outlet>
+<div>
+  <div class="fondo">
+    <div class="flex justify-center items-center h-screen div">
+      <img src="https://orig00.deviantart.net/c328/f/2017/308/1/0/solaire_by_severehercules-dbsr20g.png" height="50%" width="50%" alt="">
+      <div class="flex flex-col gap-3">
+        <h1 class="text-5xl font-bold text-white">Dark Souls APP®</h1>
+        <p class="text-white">La mejor app para los fans de Dark Souls</p>
+        <div class="flex gap-3">
+          <a class="button" href="">Iniciar sesion</a>
+          <a class="button" href="">Registrarse</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-notification [messages]="messages" [color]="color" [show]="false"></app-notification>
+
