@@ -7,35 +7,30 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 
 import { RegisterComponent } from './components/register/register.component';
 import { ChibiComponent } from './components/chibi/chibi.component';
-import { Routes } from '@angular/router';
-
-const appRoute: Routes = [
-  { path: 'Register', component: RegisterComponent },
-  { path: '', component: ChibiComponent },
-]
 
 import { DashboardComponent } from './components/shared/dashboard/dashboard.component';
 import { TableComponent } from './components/shared/table/table.component';
 import { UserComponent } from './components/user/user.component';
+import { FormComponent } from './components/shared/form/form.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-
     NotificationComponent,
     RegisterComponent,
     ChibiComponent,
-
     DashboardComponent,
     TableComponent,
-    UserComponent
-
+    UserComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

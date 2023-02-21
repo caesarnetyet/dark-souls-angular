@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChibiComponent } from './components/chibi/chibi.component';
 import { RegisterComponent } from './components/register/register.component';
-import {WelcomeComponent} from "./components/welcome/welcome.component";
-import {DashboardComponent} from "./components/shared/dashboard/dashboard.component";
 import {UserComponent} from "./components/user/user.component";
+
 
 const routes: Routes = [
   {
@@ -14,7 +13,8 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   },
   {
-    path: 'user', component: UserComponent
+    path: 'user', component: UserComponent, children: [
+    ]
   },
   {
     path: '**', redirectTo: 'chibi', pathMatch: 'full'

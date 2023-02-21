@@ -12,7 +12,7 @@ import {ModelData} from "../../../interfaces/modelData";
 export class TableComponent implements OnInit {
   @Input() data: Model<object>[] = [];
   headers?: string[] = [];
-
+  updateRow?: Model<object>;
 
   constructor() { }
 
@@ -31,4 +31,7 @@ export class TableComponent implements OnInit {
   }
 
 
+  update(row: Model<object>) {
+    this.updateRow = row
+  }
 }

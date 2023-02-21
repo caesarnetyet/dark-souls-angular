@@ -14,10 +14,12 @@
         <td>{{property}}</td>
       </ng-container>
       <td>
-        <a [routerLink]="row.actions.update_url">Actualizar</a>
+        <button (click)="update(row)">Actualizar</button>
         <a [routerLink]="row.actions.delete_url">Borrar</a>
       </td>
     </tr>
   </tbody>
 
 </table>
+
+<app-form *ngIf="updateRow" method="PUT" [url]="updateRow.actions.update_url"  [data]="updateRow.model"></app-form>
