@@ -5,7 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ChibiComponent } from './components/chibi/chibi.component';
+import { Routes } from '@angular/router';
 
+const appRoute: Routes = [
+  { path: 'Register', component: RegisterComponent },
+  { path: '', component: ChibiComponent },
+]
 
 @NgModule({
   declarations: [
@@ -13,10 +19,11 @@ import { RegisterComponent } from './components/register/register.component';
     WelcomeComponent,
     NotificationComponent,
     RegisterComponent,
+    ChibiComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
