@@ -1,1 +1,23 @@
 <p>table works!</p>
+<table>
+  <thead>
+  <th>id</th>
+    <ng-container *ngFor="let header of headers">
+      <th>{{header}}</th>
+    </ng-container>
+  <td colspan="2">actions</td>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data">
+      <td>{{row.id}}</td>
+      <ng-container *ngFor="let property of getFields(row.model)">
+        <td>{{property}}</td>
+      </ng-container>
+      <td>
+        <a [routerLink]="row.actions.update_url">Actualizar</a>
+        <a [routerLink]="row.actions.delete_url">Borrar</a>
+      </td>
+    </tr>
+  </tbody>
+
+</table>

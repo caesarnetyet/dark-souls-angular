@@ -1,8 +1,6 @@
 import {Actions} from "./actions";
 
-
-export interface Model<T>{
+export interface ModelData  {
   id: number,
-  model:T,
   actions: Actions
 }

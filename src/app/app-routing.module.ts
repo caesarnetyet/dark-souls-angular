@@ -14,11 +14,12 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   },
   {
-    path: '**', redirectTo: 'chibi', pathMatch: 'full'
+    path: 'user', component: UserComponent
   },
   {
-    path: 'user', component: UserComponent
-  }
+    path: '**', redirectTo: 'chibi', pathMatch: 'full'
+  },
+
 ];
 
 @NgModule({
