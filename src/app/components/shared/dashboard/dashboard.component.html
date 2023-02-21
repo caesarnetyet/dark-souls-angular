@@ -1,0 +1,5 @@
+<div class="flex justify-center gap-3 py-2 shadow text-white bg-slate-600">
+  <ng-container *ngFor="let anchor of anchors">
+    <a class="hover:bg-green-500 bg-green-600 text-white p-2 rounded-xl text-center" [routerLink]="anchor.url">{{anchor.name}}</a>
+  </ng-container>
+</div>
