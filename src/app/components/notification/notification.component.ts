@@ -1,17 +1,24 @@
-import { Component } from '@angular/core';
-import { Input } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MessagesService} from "../../services/messages.service";
+import {Notification} from "../../interfaces/notification";
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.css']
 })
-export class NotificationComponent {
-  @Input() messages: string[] = [];
-  @Input() color: string = 'red';
-  @Input() show: boolean = true;
-  @Input() title: string = 'Titulo de prueba';
+export class NotificationComponent implements OnInit{
+  notification?: Notification
+
+  constructor(private messageService: MessagesService) {
+  }
+
+  ngOnInit(): void {
+    this.messageService.notificationChanged.subscribe(notification => {
+      this.notification = notification
+    })
+  }
 
   changeShow() {
-    this.show = !this.show;
+    this.notification = undefined
   }
 }

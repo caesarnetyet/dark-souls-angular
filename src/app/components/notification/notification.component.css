@@ -15,7 +15,7 @@
 .red {
     background-color: rgb(255, 75, 75);
 }
-.exito{
+.green{
     background-color: rgb(101, 179, 101);
 }
 .dato {
@@ -30,7 +30,6 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 45px 55%;
     cursor: pointer;
 }
 .but:hover {
@@ -45,6 +44,6 @@
     padding: 0;
 }
 .message {
-    text-align: justify;
+    text-align: center;
     font-size: 15px;
 }

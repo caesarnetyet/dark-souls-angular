@@ -1,15 +1,16 @@
 <div class="div">
   <div class="divInterno">
-    <form action="">
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
       <h1>Registro de usuario</h1>
       <h2>Nombre</h2>
-      <input type="text">
+      <input type="text" formControlName="name">
       <h2>Telefono</h2>
-      <input type="text">
+      <input type="text" formControlName="phone_number">
       <h2>Correo</h2>
-      <input type="text">
+      <input type="text" formControlName="email" >
       <h2>Contraseña</h2>
-      <input type="password">
+      <input type="password" formControlName="password">
+      <button type="submit">Registrarse</button>
     </form>
   </div>
 </div>

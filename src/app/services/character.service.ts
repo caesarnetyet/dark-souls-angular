@@ -13,7 +13,7 @@ export class CharacterService {
   constructor(private messageService: MessagesService) {}
 
   getCharacters(): Observable<Model<Character>[]> {
-    this.messageService.addMessage('Hero Service:  Personajes cargados satisfactoriamente')
+    this.messageService.updateNotification('Cargando personajes...')
     return of(LIST_CHARACTERS)
   }
 }

@@ -13,6 +13,7 @@ import { TableComponent } from './components/shared/table/table.component';
 import { UserComponent } from './components/user/user.component';
 import { FormComponent } from './components/shared/form/form.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {ReactiveFormsModule} from "@angular/forms";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
