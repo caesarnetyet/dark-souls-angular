@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChibiComponent } from './components/chibi/chibi.component';
 import { RegisterComponent } from './components/register/register.component';
 import {UserComponent} from "./components/user/user.component";
+import {EmployeeComponent} from "./components/employee/employee.component";
+import {AdminComponent} from "./components/admin/admin.component";
+import {AuthGuard} from "./guards/auth.guard";
 
 
 const routes: Routes = [
@@ -13,7 +16,10 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   },
   {
-    path: 'user', component: UserComponent, children: [
+    path: 'dashboard', canActivate: [AuthGuard] ,children: [
+      {path: 'user', component: UserComponent, data:{requiredRole: 'user'}},
+      {path: 'employee', component: EmployeeComponent, data:{requiredRole: 'employee'}},
+      {path: 'admin', component: AdminComponent, data:{requiredRole: 'admin'}}
     ]
   },
   {

@@ -10,6 +10,7 @@ export class FormComponent implements OnInit{
   @Input() data: { [key: string]: any } = {};
   @Input() url: string = '';
   @Input() method: string = 'POST';
+
   form: FormGroup = new FormGroup({});
   constructor(private formBuilder: FormBuilder) { }
   ngOnInit() {
@@ -19,7 +20,7 @@ export class FormComponent implements OnInit{
   private generateFormControls(data: { [key: string]: any }) {
     const formControls : { [key: string]: any} = {};
     Object.keys(data).forEach(key => {
-      formControls[key] = [data[key], Validators.required];
+      formControls[key] = [data[key], Validators.required, ];
     });
     return formControls;
   }

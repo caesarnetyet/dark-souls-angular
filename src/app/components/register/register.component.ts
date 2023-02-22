@@ -40,6 +40,7 @@ export class RegisterComponent {
         name: this.registerForm.value.name ?? '',
         email: this.registerForm.value.email ?? '',
         phone_number: this.registerForm.value.phone_number ?? '',
+        role:'',
         password: this.registerForm.value.password ?? ''
       }
       this.userService.addUser(user).subscribe((() => {

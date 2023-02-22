@@ -14,7 +14,7 @@ export class MessagesService {
   notificationChanged: Subject<Notification> = new Subject<Notification>();
   constructor() { }
 
-    updateNotification(message: string, title: string = '',  color: string = 'green') {
+    updateNotification(message: string, color: string = 'green', title: string = '') {
     this.properties.message = message;
     this.properties.color = color;
     this.properties.title = title;

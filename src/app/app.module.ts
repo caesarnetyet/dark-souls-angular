@@ -13,7 +13,10 @@ import { TableComponent } from './components/shared/table/table.component';
 import { UserComponent } from './components/user/user.component';
 import { FormComponent } from './components/shared/form/form.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { EmployeeComponent } from './components/employee/employee.component';
+import { AdminComponent } from './components/admin/admin.component';
+import {BearerInterceptor} from "./interceptors/bearer.interceptor";
 
 
 @NgModule({
@@ -27,6 +30,8 @@ import {HttpClientModule} from "@angular/common/http";
     TableComponent,
     UserComponent,
     FormComponent,
+    EmployeeComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,11 @@ import {HttpClientModule} from "@angular/common/http";
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: BearerInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

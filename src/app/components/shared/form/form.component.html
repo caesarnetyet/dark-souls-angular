@@ -3,6 +3,7 @@
     <div *ngFor="let controlName of getHeaders()">
       <label for="{{controlName}}">{{controlName}}</label>
       <input type="text" id="{{controlName}}" name="{{controlName}}" [formControlName]="controlName">
+
     </div>
     <button type="submit" [disabled]="form.invalid">Submit</button>
   </form>

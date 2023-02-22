@@ -22,8 +22,16 @@ export class UserService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      this.log(`${operation} failed: ${error.message}`);
+      switch(error.status){
+        case 401:
+          this.log('No autorizado', 'red')
+          break;
+        case 500:
+          this.log(`${operation} failed: ${error.message}`, 'red')
+          break;
+        default:
+          this.log(`${operation} failed: ${error.message}`, 'red')
+      }
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
@@ -31,5 +39,13 @@ export class UserService {
   }
   private log (message: string, color: string = 'red') {
     this.messageService.updateNotification(`UserService: ${message}`, color)
+  }
+
+  getUser(): Observable<User> {
+    return this.http.get<User>(API_URL + '/usuario')
+      .pipe(
+        tap(() => this.log('fetched user')),
+        catchError(this.handleError<User>('getUser '))
+      );
   }
 }
