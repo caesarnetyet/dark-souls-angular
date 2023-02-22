@@ -1,11 +1,10 @@
-<p>table works!</p>
-<table>
+<table class="tabla">
   <thead>
   <th>id</th>
     <ng-container *ngFor="let header of headers">
       <th>{{header}}</th>
     </ng-container>
-  <td colspan="2">actions</td>
+  <th colspan="2">actions</th>
   </thead>
   <tbody>
     <tr *ngFor="let row of data">
@@ -14,12 +13,11 @@
         <td>{{property}}</td>
       </ng-container>
       <td>
-        <button (click)="update(row)">Actualizar</button>
+        <button (click)="update(row)">Actualizar </button>
         <a [routerLink]="row.actions.delete_url">Borrar</a>
       </td>
     </tr>
   </tbody>
-
 </table>
 
 <app-form *ngIf="updateRow" method="PUT" [url]="updateRow.actions.update_url"  [data]="updateRow.model"></app-form>

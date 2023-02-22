@@ -1,0 +1,24 @@
+th
+{
+  height: 40px;
+  background-color: rgb( 1,1,1);
+  color: white;
+}
+.tabla
+{
+  overflow: scroll;
+  height: 300px;
+  background-color:rgb( 1,1,1);
+  border: 1px solid white;
+  border-collapse: collapse;
+  width: 100%;
+}
+td
+{
+  border: 1px solid white;
+  border-collapse: collapse;
+  text-align: start;
+  padding: 8px;
+}
+
+
