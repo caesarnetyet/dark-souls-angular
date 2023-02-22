@@ -16,6 +16,7 @@ const routes: Routes = [
     path: 'iniSesion', component: InicioSesionComponent
   },
   {
+
     path: 'verify', component: CodigoComponent
   },
   {
