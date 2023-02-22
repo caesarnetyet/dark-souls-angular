@@ -20,6 +20,7 @@ import {BearerInterceptor} from "./interceptors/bearer.interceptor";
 import { CodigoComponent } from './components/codigo/codigo.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
+import { AddCharacterComponent } from './components/characters/add-character/add-character.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.
     AdminComponent,
     NotFoundComponent,
     InicioSesionComponent,
+    AddCharacterComponent,
   ],
     imports: [
         BrowserModule,

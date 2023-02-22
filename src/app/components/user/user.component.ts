@@ -11,7 +11,7 @@ import {CharacterService} from "../../services/character.service";
 })
 export class UserComponent implements OnInit {
   anchors: Anchor[] = [
-    {name: 'Agregar usuario', url: '/user/add'}
+    {name: 'Agregar usuario', url: 'add'}
     ];
   characters: Model<Character>[] = []
   constructor(private characterService: CharacterService) { }

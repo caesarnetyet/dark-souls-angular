@@ -7,6 +7,8 @@ import {MessagesService} from "../messages.service";
 import {Login} from "../../interfaces/login";
 import {Token} from "../../interfaces/token";
 import {data} from "autoprefixer";
+import {Model} from "../../interfaces/model";
+import {Character} from "../../interfaces/character";
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +46,8 @@ export class UserService {
     this.messageService.updateNotification(`UserService: ${message}`, color)
   }
 
+
+
   getUser(): Observable<User> {
     return this.http.get<User>(API_URL + '/usuario')
       .pipe(
@@ -74,4 +78,6 @@ export class UserService {
         catchError(this.handleError<Token>('login'))
       )
   }
+
+
 }

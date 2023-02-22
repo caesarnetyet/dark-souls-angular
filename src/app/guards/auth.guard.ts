@@ -17,6 +17,7 @@ export class AuthGuard implements CanActivate {
       map((user: User) => {
         console.log(user);
         if (user) {
+
           const role = route.data['requiredRole'];
 
           if (user.role === role) {
