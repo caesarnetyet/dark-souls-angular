@@ -48,4 +48,19 @@ export class UserService {
         catchError(this.handleError<User>('getUser '))
       );
   }
+  getVerificationCode(signedUrl: string): Observable<string> {
+    return this.http.get<string>(signedUrl).pipe(
+      tap(() => this.log('fetched verification code')),
+      catchError(this.handleError<string>('getVerificationCode'))
+    )
+  }
+
+  verifyCode(verification_url: string, codigo: string): Observable<string | object> {
+    return this.http.post<string | object>(verification_url, {'codigo': codigo}).
+    pipe(
+      tap(() => this.messageService
+        .updateNotification('Cuenta verificada satisfactoriamente')),
+      catchError(this.handleError<string>('getVerificationCode'))
+    )
+  }
 }

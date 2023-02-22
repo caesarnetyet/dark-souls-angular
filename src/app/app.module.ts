@@ -12,7 +12,7 @@ import { DashboardComponent } from './components/shared/dashboard/dashboard.comp
 import { TableComponent } from './components/shared/table/table.component';
 import { UserComponent } from './components/user/user.component';
 import { FormComponent } from './components/shared/form/form.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { EmployeeComponent } from './components/employee/employee.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -34,12 +34,13 @@ import { CodigoComponent } from './components/codigo/codigo.component';
     EmployeeComponent,
     AdminComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        FormsModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS, useClass: BearerInterceptor, multi: true
