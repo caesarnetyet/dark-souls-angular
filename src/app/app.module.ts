@@ -17,7 +17,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { EmployeeComponent } from './components/employee/employee.component';
 import { AdminComponent } from './components/admin/admin.component';
 import {BearerInterceptor} from "./interceptors/bearer.interceptor";
-
+import { CodigoComponent } from './components/codigo/codigo.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import {BearerInterceptor} from "./interceptors/bearer.interceptor";
     DashboardComponent,
     TableComponent,
     UserComponent,
+    CodigoComponent,
     FormComponent,
     EmployeeComponent,
     AdminComponent,
