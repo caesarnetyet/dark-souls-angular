@@ -20,6 +20,7 @@ export class InicioSesionComponent {
     if (this.email && this.password){
       this.userService.login({email: this.email, password: this.password} as Login).subscribe(
         (data) => {
+          console.log(data)
           localStorage.setItem("token", data.token);
           this.router.navigate(['/dashboard/user'])
         }

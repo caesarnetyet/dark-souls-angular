@@ -1,1 +1,17 @@
-<p>add-character works!</p>
+<div *ngIf="classes" class="div">
+  <div class="divInterno">
+    <form (ngSubmit)="onSubmit()" [formGroup]="characterForm">
+      <h1>Creando Personaje</h1>
+      <h2>Nombre</h2>
+      <input type="text" formControlName="name">
+      <h2>Telefono</h2>
+    <select>
+        <ng-container *ngFor="let class_ of classes">
+          <option value="{{class_.id}}">{{class_.name}}</option>
+        </ng-container>
+
+      </select>
+      <button type="submit">Registrarse</button>
+    </form>
+  </div>
+</div>

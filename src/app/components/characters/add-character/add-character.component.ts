@@ -1,12 +1,60 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CharacterService} from "../../../services/character.service";
+import {Class} from "../../../interfaces/class";
+import {FormBuilder, Validators} from "@angular/forms";
+import {CharacterData} from "../../../interfaces/characterData";
+import {Location} from "@angular/common";
+import {MessagesService} from "../../../services/messages.service";
 
 @Component({
-  selector: 'app-add-character',
+selector: 'app-add-character.ts',
   templateUrl: './add-character.component.html',
   styleUrls: ['./add-character.component.css']
 })
-export class AddCharacterComponent {
-  constructor(characterService: CharacterService) { }
+export class AddCharacterComponent implements OnInit{
 
+  characterForm = this.fb.group({
+    name: ['', Validators.required],
+    class: [0, Validators.required],
+  })
+  constructor(private characterService: CharacterService,
+              private fb:FormBuilder,
+              private location: Location,
+              private messageService: MessagesService)   { }
+  classes?: Class[];
+
+
+
+ngOnInit(): void {
+    this.getClasses()
+  }
+  getClasses(): void {
+    this.characterService.getClasses().subscribe(classes => classes.length > 0
+      ? this.classes = classes
+      : this.goBack('No se encontraron clases'))
+  }
+
+  goBack(message: string = ''): void {
+  if (message) {
+    this.messageService.updateNotification(message, 'red', 'No encontrado')
+  }
+    this.location.back();
+  }
+
+  onSubmit() {
+    console.log('clicked submit')
+    if (this.characterForm.invalid){
+      console.log('invalid form')
+    }
+    if (this.characterForm.valid) {
+      console.log('valid form')
+      const character: CharacterData = {
+        name: this.characterForm.value.name ?? '',
+        class: this.characterForm.value.class ?? 0
+      }
+      this.characterService.addCharacter(character).subscribe((() => {
+        console.log('added character.ts')
+      }))
+    }
+  }
 }

@@ -1,7 +1,7 @@
 import {Model} from "../interfaces/model";
-import {Character} from "../interfaces/character";
+import {CharacterData} from "../interfaces/characterData";
 
-export const LIST_CHARACTERS: Model<Character>[] = [{
+export const LIST_CHARACTERS: Model<CharacterData>[] = [{
   "id": 1,
   "model": {"name": "Pedro", "class": "Alchemist"},
   "actions": {"delete_url": "#", "update_url": "#"}

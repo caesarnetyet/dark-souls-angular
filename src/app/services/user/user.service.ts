@@ -6,9 +6,6 @@ import {User} from "../../interfaces/user";
 import {MessagesService} from "../messages.service";
 import {Login} from "../../interfaces/login";
 import {Token} from "../../interfaces/token";
-import {data} from "autoprefixer";
-import {Model} from "../../interfaces/model";
-import {Character} from "../../interfaces/character";
 
 @Injectable({
   providedIn: 'root'
@@ -27,9 +24,10 @@ export class UserService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
+      console.log(error)
       switch(error.status){
         case 401:
-          this.log('No autorizado', 'red')
+          this.log(error.message, 'red')
           break;
         case 500:
           this.log(`${operation} failed: ${error.message}`, 'red')

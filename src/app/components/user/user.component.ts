@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Anchor} from "../../interfaces/anchor";
 import {Model} from "../../interfaces/model";
-import {Character} from "../../interfaces/character";
 import {CharacterService} from "../../services/character.service";
+import {Character} from "../../interfaces/character";
 
 @Component({
   selector: 'app-user',
@@ -11,7 +11,7 @@ import {CharacterService} from "../../services/character.service";
 })
 export class UserComponent implements OnInit {
   anchors: Anchor[] = [
-    {name: 'Agregar usuario', url: 'add'}
+    {name: 'Agregar personaje', url: 'add'}
     ];
   characters: Model<Character>[] = []
   constructor(private characterService: CharacterService) { }
