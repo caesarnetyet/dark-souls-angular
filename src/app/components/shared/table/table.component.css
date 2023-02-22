@@ -1,5 +1,6 @@
 /* Estilos generales de la tabla */
 table {
+  margin-top: -30px;
   border-collapse: collapse;
   width: 100%;
 }
@@ -22,14 +23,8 @@ table tr:first-child th {
 }
 
 /* Estilos de la última fila */
-table tr:last-child td {
-  border-bottom: none;
-}
 
-/* Estilos de las filas impares */
-table tr:nth-child(odd) {
-  background-color: #f2f2f2;
-}
+
 
 /* Estilos al pasar el ratón por encima de una fila */
 table tr:hover {
@@ -78,6 +73,31 @@ table td.status .label.warning {
 table td.status .label.danger {
   background-color: #f44336;
   color: white;
+}
+.button
+{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  height: 30px;
+}
+.buttonElim
+{
+  background-color: #f44336; /* Red */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
 

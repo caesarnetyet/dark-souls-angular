@@ -13,8 +13,8 @@
         <td>{{property}}</td>
       </ng-container>
       <td>
-        <button (click)="update(row)">Actualizar </button>
-        <a [routerLink]="row.actions.delete_url">Borrar</a>
+        <button (click)="update(row)" class="button">Actualizar </button>
+        <a [routerLink]="row.actions.delete_url" class="button buttonElim">Borrar</a>
       </td>
     </tr>
   </tbody>

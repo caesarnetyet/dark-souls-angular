@@ -19,6 +19,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import {BearerInterceptor} from "./interceptors/bearer.interceptor";
 import { CodigoComponent } from './components/codigo/codigo.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     EmployeeComponent,
     AdminComponent,
     NotFoundComponent,
+    InicioSesionComponent,
   ],
     imports: [
         BrowserModule,

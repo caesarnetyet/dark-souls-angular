@@ -8,9 +8,13 @@ import {EmployeeComponent} from "./components/employee/employee.component";
 import {AdminComponent} from "./components/admin/admin.component";
 import {AuthGuard} from "./guards/auth.guard";
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
 
 
 const routes: Routes = [
+  {
+    path: 'iniSesion', component: InicioSesionComponent
+  },
   {
     path: 'verify', component: CodigoComponent
   },
@@ -21,7 +25,7 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   },
   {
-    path: 'dashboard', canActivate: [AuthGuard] ,children: [
+    path: 'dashboard', canActivate:[AuthGuard] ,children: [
       {path: 'user', component: UserComponent, data:{requiredRole: 'user'}},
       {path: 'employee', component: EmployeeComponent, data:{requiredRole: 'employee'}},
       {path: 'admin', component: AdminComponent, data:{requiredRole: 'admin'}}
