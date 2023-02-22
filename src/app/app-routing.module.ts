@@ -13,7 +13,7 @@ import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.
 
 const routes: Routes = [
   {
-    path: 'iniSesion', component: InicioSesionComponent
+    path: 'login', component: InicioSesionComponent
   },
   {
 
@@ -26,10 +26,10 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   },
   {
-    path: 'dashboard', canActivate:[AuthGuard] ,children: [
-      {path: 'user', component: UserComponent, data:{requiredRole: 'user'}},
-      {path: 'employee', component: EmployeeComponent, data:{requiredRole: 'employee'}},
-      {path: 'admin', component: AdminComponent, data:{requiredRole: 'admin'}}
+    path: 'dashboard',  children: [
+      {path: 'user', canActivate:[AuthGuard],component: UserComponent, data:{requiredRole: 'user'}},
+      {path: 'employee', canActivate:[AuthGuard],component: EmployeeComponent, data:{requiredRole: 'employee'}},
+      {path: 'admin', canActivate:[AuthGuard], component: AdminComponent, data:{requiredRole: 'admin'}}
     ]
   },
   {

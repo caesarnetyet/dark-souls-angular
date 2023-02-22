@@ -2,10 +2,10 @@
   <img src="https://th.bing.com/th/id/R.d6c9017e36ceedda93269d42b7b1b59f?rik=2YzIhBtqLrT%2bHw&riu=http%3a%2f%2fimg02.deviantart.net%2f5ceb%2fi%2f2016%2f076%2f7%2f4%2fmy_heroes_from_dark_souls_by_haruinkisitor-d9vgs07.png&ehk=SojUJ0SzOi%2f4YVsT1JCUSkunYgkaQAdbLHPrbc98LA0%3d&risl=&pid=ImgRaw&r=0" height="70%" width="70%" alt="">
   <div class="flex flex-col gap-3">
     <h1 class="font-bold text-white">Inicio de sesion</h1>
-    <h2>Usuario</h2>
-    <input type="text">
+    <h2>Email</h2>
+    <input [(ngModel)]="email" type="text">
     <h2>Contraseña</h2>
-    <input type="text">
-    <button>Iniciar Sesion</button>
+    <input [(ngModel)]="password" type="text">
+    <button (click)="submit()">Iniciar Sesion</button>
   </div>
 </div>

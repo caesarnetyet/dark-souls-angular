@@ -4,6 +4,9 @@ import {catchError, Observable, of, tap} from "rxjs";
 import {API_URL} from "../../env/endpoint";
 import {User} from "../../interfaces/user";
 import {MessagesService} from "../messages.service";
+import {Login} from "../../interfaces/login";
+import {Token} from "../../interfaces/token";
+import {data} from "autoprefixer";
 
 @Injectable({
   providedIn: 'root'
@@ -37,14 +40,14 @@ export class UserService {
       return of(result as T);
     };
   }
-  private log (message: string, color: string = 'red') {
+  private log (message: string, color: string = 'green') {
     this.messageService.updateNotification(`UserService: ${message}`, color)
   }
 
   getUser(): Observable<User> {
     return this.http.get<User>(API_URL + '/usuario')
       .pipe(
-        tap(() => this.log('fetched user')),
+        tap((data) => console.log(data)),
         catchError(this.handleError<User>('getUser '))
       );
   }
@@ -62,5 +65,13 @@ export class UserService {
         .updateNotification('Cuenta verificada satisfactoriamente')),
       catchError(this.handleError<string>('getVerificationCode'))
     )
+  }
+
+  login(request: Login): Observable<Token> {
+    return this.http.post<Token>(API_URL + '/usuario/login', request)
+      .pipe(
+        tap(() => this.log('login')),
+        catchError(this.handleError<Token>('login'))
+      )
   }
 }
