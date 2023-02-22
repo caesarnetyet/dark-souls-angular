@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,4 +10,14 @@ export class AppComponent {
   messages: string[] = ['Mensaje 1', 'Mensaje 2', 'Mensaje 3'];
   color: string = 'dato';
   authToken = localStorage.getItem('token');
+
+  constructor(private Location: Location)
+  {
+  }
+  eliminarToken()
+  {
+    localStorage.removeItem('token');
+    this.Location.go('/login');
+    location.reload();
+  }
 }

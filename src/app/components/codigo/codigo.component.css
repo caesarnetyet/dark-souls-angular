@@ -14,6 +14,7 @@
 }
 .divInterno
 {
+  margin-top: -30px;
   height: 100%;
   width: 80%;
   color: white;
@@ -48,9 +49,9 @@ input
   font-weight: bolder;
 }
 .centrarImagen{
-  margin-top: 40px;
-  width: 100%;
-  height: 100%;
+  margin-top: -30px;
+  width: 60%;
+  height: 60%;
   display: block;
   margin-left: 20px;
 }
