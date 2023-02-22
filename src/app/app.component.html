@@ -2,7 +2,7 @@
   <h1>Dark Souls APP®</h1>
   <div class="flex gap-3">
     <ng-container *ngIf="authToken">
-      <a class="button" routerLink="">Cerrar Sesion</a>
+      <a class="button" (click)="eliminarToken()" routerLink="chibi">Cerrar Sesion</a>
     </ng-container>
     <ng-container *ngIf="!authToken">
       <a class="button" routerLink="login">Iniciar sesion</a>
