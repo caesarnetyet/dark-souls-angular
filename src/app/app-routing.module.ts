@@ -7,6 +7,7 @@ import {UserComponent} from "./components/user/user.component";
 import {EmployeeComponent} from "./components/employee/employee.component";
 import {AdminComponent} from "./components/admin/admin.component";
 import {AuthGuard} from "./guards/auth.guard";
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,10 @@ const routes: Routes = [
     ]
   },
   {
-    path: '**', redirectTo: 'chibi', pathMatch: 'full'
+    path: 'notFound', component : NotFoundComponent
+  },
+  {
+    path: '**', redirectTo: 'notFound', pathMatch: 'full'
   },
 
 ];
