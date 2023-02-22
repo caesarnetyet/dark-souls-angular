@@ -29,9 +29,4 @@ export const LIST_CHARACTERS: Model<Character>[] = [{
   "id": 8,
   "model": {"name": "Luisa", "class": "Barbarian"},
   "actions": {"delete_url": "#", "update_url": "#"}
-}, {
-  "id": 9,
-  "model": {"name": "Victor", "class": "Bard"},
-  "actions": {"delete_url": "#", "update_url": "#"}
-}, {"id": 10, "model": {"name": "Laura", "class": "Fighter"}, "actions": {"delete_url": "#", "update_url": "#"}},
-  {"id": 11, "model": {"name": "Pedro", "class": "Alchemist"}, "actions": {"delete_url": "#", "update_url": "#"}},]
+}, ]

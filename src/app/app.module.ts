@@ -18,6 +18,8 @@ import { EmployeeComponent } from './components/employee/employee.component';
 import { AdminComponent } from './components/admin/admin.component';
 import {BearerInterceptor} from "./interceptors/bearer.interceptor";
 import { CodigoComponent } from './components/codigo/codigo.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { CodigoComponent } from './components/codigo/codigo.component';
     FormComponent,
     EmployeeComponent,
     AdminComponent,
+    NotFoundComponent,
+    InicioSesionComponent,
   ],
     imports: [
         BrowserModule,

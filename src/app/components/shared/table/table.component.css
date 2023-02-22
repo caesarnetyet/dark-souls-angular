@@ -1,24 +1,103 @@
-th
-{
-  height: 40px;
-  background-color: rgb( 1,1,1);
-  color: white;
-}
-.tabla
-{
-  overflow: scroll;
-  height: 300px;
-  background-color:rgb( 1,1,1);
-  border: 1px solid white;
+/* Estilos generales de la tabla */
+table {
+  margin-top: -30px;
   border-collapse: collapse;
   width: 100%;
 }
-td
-{
-  border: 1px solid white;
-  border-collapse: collapse;
-  text-align: start;
+
+table td,
+table th {
+  border: 1px solid #ddd;
   padding: 8px;
+  text-align: left;
+}
+
+table th {
+  background-color: #333;
+  color: white;
+}
+
+/* Estilos de la primera fila (encabezado) */
+table tr:first-child th {
+  border-top: none;
+}
+
+/* Estilos de la última fila */
+
+
+
+/* Estilos al pasar el ratón por encima de una fila */
+table tr:hover {
+  background-color: #ddd;
+}
+
+/* Estilos de la columna de acciones */
+table td.actions {
+  white-space: nowrap;
+}
+
+table td.actions a {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+table td.actions a:hover {
+  background-color: #3e8e41;
+}
+
+/* Estilos de la columna de estatus */
+table td.status {
+  text-transform: uppercase;
+}
+
+table td.status .label {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+table td.status .label.success {
+  background-color: #4CAF50;
+  color: white;
+}
+
+table td.status .label.warning {
+  background-color: #ff9800;
+  color: white;
+}
+
+table td.status .label.danger {
+  background-color: #f44336;
+  color: white;
+}
+.button
+{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  height: 30px;
+}
+.buttonElim
+{
+  background-color: #f44336; /* Red */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
 
