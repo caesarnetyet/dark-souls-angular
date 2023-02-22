@@ -12,7 +12,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {
-    path: 'verification', component: CodigoComponent
+    path: 'verify', component: CodigoComponent
   },
   {
     path: 'chibi', component: ChibiComponent,
