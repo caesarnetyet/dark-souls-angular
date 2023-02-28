@@ -5,4 +5,5 @@ export interface User {
   password: string;
   role: string;
   phone: string;
+  active: boolean;
 }

@@ -24,6 +24,10 @@ const routes: Routes = [
   {
     path: 'chibi', component: ChibiComponent,
   },
+
+  {
+    path: '', redirectTo: 'chibi', pathMatch: 'full'
+  },
   {
     path: 'register', component: RegisterComponent
   },

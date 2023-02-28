@@ -6,5 +6,5 @@ export interface Notification {
 
 export interface Message {
   message?: string;
-  error?: [object];
+  error?: { [key: string]: any};
 }

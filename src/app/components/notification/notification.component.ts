@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MessagesService} from "../../services/messages.service";
 import {Notification} from "../../interfaces/notification";
+import {Validators} from "@angular/forms";
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
@@ -17,7 +18,9 @@ export class NotificationComponent implements OnInit{
       this.notification = notification
       console.log(this.notification.message)
     })
+
   }
+
 
   changeShow() {
     this.notification = undefined

@@ -19,21 +19,10 @@ export class UserService {
   addUser(user: User): Observable<Message> {
     return this.http.post<Message>(API_URL + '/user', user)
       .pipe(
-        catchError((errorResponse) => {
-          let message: Message;
-          if (errorResponse.error && errorResponse.error.message) {
-            message = { message: errorResponse.error.message };
-          } else if (errorResponse.error && errorResponse.error.error) {
-            message = { error: errorResponse.error.error };
-          } else {
-            message = { message: 'An error occurred while processing your request.' };
-          }
-          return of(message);
-        }),
+        catchError(this.handleError<Message>('addUser', {message: 'Error al crear usuario'})),
         tap((message) => this.messageService.updateNotification(message))
       );
   }
-
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

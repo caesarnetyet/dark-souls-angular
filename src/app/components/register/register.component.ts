@@ -41,10 +41,13 @@ export class RegisterComponent {
         email: this.registerForm.value.email ?? '',
         phone: this.registerForm.value.phone?? '',
         role:'',
-        password: this.registerForm.value.password ?? ''
+        password: this.registerForm.value.password ?? '',
+        active: false
       }
-      this.userService.addUser(user).subscribe((() => {
+      this.userService.addUser(user).subscribe(((data) => {
+        console.log(data)
         this.goBack()
+
       }))
 
     }
