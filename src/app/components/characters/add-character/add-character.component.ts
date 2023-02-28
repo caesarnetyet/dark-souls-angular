@@ -57,7 +57,7 @@ ngOnInit(): void {
       }
       this.characterService.addCharacter(character).subscribe((() => {
         console.log('added character.ts')
-
+        this.goBack()
       }))
     }
   }
