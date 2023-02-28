@@ -13,7 +13,7 @@ export class FormComponent implements OnInit{
   @Input() path: string = '';
   @Input() method: string = 'POST';
   @Input() select: object[] = []
-
+  @Input() mostrar: boolean = true;
   @Input() title: string = '';
   form: FormGroup = new FormGroup({});
 
@@ -42,7 +42,6 @@ export class FormComponent implements OnInit{
         this.goBack()
       }
     )
+
   }
-
-
 }

@@ -6,7 +6,7 @@
     </ng-container>
   <th colspan="2">actions</th>
   </thead>
-  <tbody>o
+  <tbody>
     <tr *ngFor="let row of data">
       <td>{{row.id}}</td>
       <ng-container *ngFor="let property of getFields(row.attributes)">
@@ -14,7 +14,7 @@
       </ng-container>
       <td>
         <button (click)="update(row)" class="button">Actualizar </button>
-        <button (click)="delete(row.actions.delete_url)">Borrar</button>
+        <button (click)="delete(row.actions.delete_url)" class=" button buttonElim">Borrar</button>
       </td>
     </tr>
   </tbody>
