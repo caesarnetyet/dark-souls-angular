@@ -8,8 +8,8 @@ import {API_URL} from "../../../env/endpoint";
 })
 export class AddClassComponent {
   model  = {
-    nombre: '',
+    name: '',
   }
-  path = API_URL + '/clases/agregar'
+  path = API_URL + '/class'
 
 }

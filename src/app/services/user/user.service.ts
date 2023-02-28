@@ -107,4 +107,12 @@ export class UserService {
       catchError(this.handleError<any>('delete'))
     )
   }
+
+  getUsers(): Observable<Model<User>[]> {
+    return this.http.get<Model<User>[]>(API_URL + '/users')
+      .pipe(
+        tap(() => this.log('fetched users')),
+        catchError(this.handleError<Model<User>[]>('getUsers', []))
+      );
+  }
 }

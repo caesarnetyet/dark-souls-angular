@@ -20,8 +20,5 @@
   </tbody>
 </table>
 
-<<<<<<< HEAD
-<app-form *ngIf="updateRow" method="PUT" [path]="updateRow.actions.update_url"  [data]="updateRow.model"></app-form>
-=======
-<app-form *ngIf="updateRow" method="PUT" [url]="updateRow.actions.update_url"  [data]="updateRow.attributes"></app-form>
->>>>>>> 26e0b01131e65c1b8d3bd1979138df062c2fc0f0
+
+<app-form *ngIf="updateRow" method="PUT" [path]="updateRow.actions.update_url"  [data]="updateRow.attributes"></app-form>

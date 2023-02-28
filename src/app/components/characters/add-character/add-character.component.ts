@@ -5,6 +5,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {CharacterData} from "../../../interfaces/characterData";
 import {Location} from "@angular/common";
 import {MessagesService} from "../../../services/messages.service";
+import {Character} from "../../../interfaces/character";
 
 @Component({
 selector: 'app-add-character.ts',
@@ -49,9 +50,9 @@ ngOnInit(): void {
     }
     if (this.characterForm.valid) {
       console.log('valid form')
-      const character: CharacterData = {
+      const character: Character = {
         name: this.characterForm.value.name ?? '',
-        class: this.characterForm.value.class ?? 0
+        class_id: this.characterForm.value.class ?? 0
       }
       this.characterService.addCharacter(character).subscribe((() => {
         console.log('added character.ts')
