@@ -19,7 +19,6 @@ export class TableComponent implements OnInit {
 
 
   async ngOnInit() {
-
   }
 
   getFields(model: Object) {
@@ -31,7 +30,7 @@ export class TableComponent implements OnInit {
 
   update(row: Model<object>) {
     this.updateRow = row
-    console.log(this.updateRow)
+    this.updateEvent.emit(row)
   }
 
   delete(delete_url: string) {
