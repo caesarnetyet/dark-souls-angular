@@ -19,23 +19,24 @@ export class UserService {
   addUser(user: User): Observable<Message> {
     return this.http.post<Message>(API_URL + '/user', user)
       .pipe(
+        tap((message) => this.messageService.updateNotification(message)),
         catchError(this.handleError<Message>('addUser', {message: 'Error al crear usuario'})),
-        tap((message) => this.messageService.updateNotification(message))
+
       );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.log(error)
+      console.log(error.error)
       switch(error.status){
         case 401:
-          this.log(`${operation}`, 'red')
+          this.log(`No tienes acceso ${JSON.stringify(error.error)}`, 'red')
           break;
         case 500:
           this.log(`${operation} failed: ${error.message}`, 'red')
           break;
         default:
-          this.log(`${operation} failed: ${error.message}`, 'red')
+          this.log(`No tienes acceso ${JSON.stringify(error.error.error)}`, 'red')
       }
 
       // Let the app keep running by returning an empty result.

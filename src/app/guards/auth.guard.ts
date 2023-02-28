@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
-
 import { UserService } from "../services/user/user.service";
-import { User } from "../interfaces/user";
 import {map, Observable} from "rxjs";
 import {MessagesService} from "../services/messages.service";
 
@@ -17,6 +15,7 @@ export class AuthGuard implements CanActivate {
     return this.userService.getUser().pipe(
       map((user) => {
         if (!user) {
+          this.messageService.updateNotification('Usuario no logueado', 'red')
           this.router.navigate(['/chibi']).then(r => console.log(r));
           return false;
         }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user/user.service";
 import {Login} from "../../interfaces/login";
 import {Router} from "@angular/router";
@@ -9,7 +9,7 @@ import {Location} from "@angular/common";
   templateUrl: './inicio-sesion.component.html',
   styleUrls: ['./inicio-sesion.component.css']
 })
-export class InicioSesionComponent {
+export class InicioSesionComponent implements  OnInit{
   email?: string
   password?: string
 

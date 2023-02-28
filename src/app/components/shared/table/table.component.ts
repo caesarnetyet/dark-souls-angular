@@ -34,11 +34,15 @@ export class TableComponent implements OnInit {
   }
 
   delete(delete_url: string) {
-    this.userService.delete(delete_url).subscribe(
-      (data) => console.log(data)
+    const response = confirm('¿Estas seguro de eliminar este registro?')
+    if (response) {
+      this.userService.delete(delete_url).subscribe(
+        (data) => console.log(data)
 
-    )
-    this.deleteEvent.emit(delete_url)
+      )
+      this.deleteEvent.emit(delete_url)
     }
+
+  }
 
 }

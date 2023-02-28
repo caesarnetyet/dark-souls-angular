@@ -19,6 +19,9 @@ export class BearerInterceptor implements HttpInterceptor {
       })
       return next.handle(authRequest)
     }
-    return next.handle(request);
+    const setAcceptType = request.clone({
+      headers: request.headers.set('Accept', 'application/json')
+    })
+    return next.handle(setAcceptType)
   }
 }
