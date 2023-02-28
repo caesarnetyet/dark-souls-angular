@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import {Subject} from "rxjs";
-import {Notification} from "../interfaces/notification";
+import {Notification, Message} from "../interfaces/notification";
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class MessagesService {
   properties: Notification = {
-    message: '',
+    message: {},
     color: 'green',
     title: 'Titulo de prueba'
   }
@@ -14,8 +16,13 @@ export class MessagesService {
   notificationChanged: Subject<Notification> = new Subject<Notification>();
   constructor() { }
 
-    updateNotification(message: string, color: string = 'green', title: string = '') {
-    this.properties.message = message;
+    updateNotification(message: string | Message, color: string = 'green', title: string = '') {
+
+    if (typeof message === 'string') {
+      this.properties.message = {message: message};
+    } else {
+      this.properties.message = message;
+    }
     this.properties.color = color;
     this.properties.title = title;
     this.notificationChanged.next(this.properties);

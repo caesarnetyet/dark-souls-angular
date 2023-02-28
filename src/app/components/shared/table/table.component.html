@@ -9,7 +9,7 @@
   <tbody>
     <tr *ngFor="let row of data">
       <td>{{row.id}}</td>
-      <ng-container *ngFor="let property of getFields(row.model)">
+      <ng-container *ngFor="let property of getFields(row.attributes)">
         <td>{{property}}</td>
       </ng-container>
       <td>
@@ -20,4 +20,4 @@
   </tbody>
 </table>
 
-<app-form *ngIf="updateRow" method="PUT" [url]="updateRow.actions.update_url"  [data]="updateRow.model"></app-form>
+<app-form *ngIf="updateRow" method="PUT" [url]="updateRow.actions.update_url"  [data]="updateRow.attributes"></app-form>

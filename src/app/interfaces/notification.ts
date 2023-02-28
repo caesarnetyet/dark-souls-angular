@@ -1,5 +1,10 @@
 export interface Notification {
-  message: string;
+  message: Message;
   color: string;
   title: string;
+}
+
+export interface Message {
+  message?: string;
+  error?: [object];
 }
