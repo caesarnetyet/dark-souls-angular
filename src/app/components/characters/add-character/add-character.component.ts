@@ -27,9 +27,10 @@ export class AddCharacterComponent implements OnInit{
 
 ngOnInit(): void {
     this.getClasses()
+    console.log(this.classes)
   }
   getClasses(): void {
-    this.characterService.getClasses().subscribe(classes => classes.length > 0
+    this.characterService.getClass().subscribe(classes => classes.length > 0
       ? this.classes = classes
       : this.goBack('No se encontraron clases'))
   }
@@ -42,7 +43,7 @@ ngOnInit(): void {
   }
 
   onSubmit() {
-    console.log('clicked submit')
+    console.log(this.characterForm.value)
     if (this.characterForm.invalid){
       console.log('invalid form')
     }

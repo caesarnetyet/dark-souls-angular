@@ -78,4 +78,18 @@ export class UserService {
   }
 
 
+  genericRequest(path: string, method: string, body: object): Observable<any> {
+    return this.http.request(method, path, {body: body})
+      .pipe(
+        tap(() => this.log('generic request')),
+        catchError(this.handleError<any>('generic request'))
+      )
+  }
+
+  delete(delete_url: string): Observable<any> {
+    return this.http.delete<any>(delete_url).pipe(
+      tap(() => this.log('delete')),
+      catchError(this.handleError<any>('delete'))
+    )
+  }
 }

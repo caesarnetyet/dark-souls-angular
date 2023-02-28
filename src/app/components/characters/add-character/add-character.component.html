@@ -3,11 +3,11 @@
     <form (ngSubmit)="onSubmit()" [formGroup]="characterForm">
       <h1>Creando Personaje</h1>
       <h2>Nombre</h2>
-      <input type="text" formControlName="name">
+      <input  class="text-black" type="text" formControlName="name">
       <h2>Telefono</h2>
-    <select>
+    <select formControlName="class">
         <ng-container *ngFor="let class_ of classes">
-          <option value="{{class_.id}}">{{class_.name}}</option>
+          <option class="text-black" value="{{class_.id}}">{{class_.name}}</option>
         </ng-container>
 
       </select>

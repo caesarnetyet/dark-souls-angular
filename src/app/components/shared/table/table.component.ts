@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Model} from "../../../interfaces/model";
 import {ModelData} from "../../../interfaces/modelData";
+import {UserService} from "../../../services/user/user.service";
 
 
 
@@ -14,7 +15,7 @@ export class TableComponent implements OnInit {
   headers?: string[] = [];
   updateRow?: Model<object>;
 
-  constructor() { }
+  constructor(private userService: UserService ) {}
 
   ngOnInit(): void {
     this.headers = this.getHeaders()
@@ -34,4 +35,11 @@ export class TableComponent implements OnInit {
   update(row: Model<object>) {
     this.updateRow = row
   }
+
+  delete(delete_url: string) {
+    this.userService.delete(delete_url).subscribe(
+      (data) => console.log(data)
+    )
+    }
+
 }

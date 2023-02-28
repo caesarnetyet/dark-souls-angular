@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UserService} from "../../../services/user/user.service";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-form',
@@ -8,11 +10,15 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class FormComponent implements OnInit{
   @Input() data: { [key: string]: any } = {};
-  @Input() url: string = '';
+  @Input() path: string = '';
   @Input() method: string = 'POST';
+  
+  @Input() select: object[] = []
 
+  @Input() title: string = '';
   form: FormGroup = new FormGroup({});
-  constructor(private formBuilder: FormBuilder) { }
+
+  constructor(private formBuilder: FormBuilder,private userService: UserService, private location: Location) { }
   ngOnInit() {
     this.form = this.formBuilder.group(this.generateFormControls(this.data));
   }
@@ -24,6 +30,20 @@ export class FormComponent implements OnInit{
     });
     return formControls;
   }
+  private goBack() {
+    this.location.back()
+  }
   getHeaders(): string[] {return Object.keys(this.form.controls)}
+
+  submit() {
+    console.log('CLick')
+    this.userService.genericRequest(this.path, this.method, this.form.value).subscribe(
+      (data) => {
+        console.log(data)
+        this.goBack()
+      }
+    )
+  }
+
 
 }

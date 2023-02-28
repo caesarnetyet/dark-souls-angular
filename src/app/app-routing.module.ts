@@ -10,6 +10,7 @@ import {AuthGuard} from "./guards/auth.guard";
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
 import {AddCharacterComponent} from "./components/characters/add-character/add-character.component";
+import {AddClassComponent} from "./components/employee/add-class/add-class.component";
 
 
 const routes: Routes = [
@@ -28,10 +29,18 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',  children: [
-      {path: 'user', canActivate:[AuthGuard],component: UserComponent, data:{requiredRole: 'user'}, children: [
+      {path: 'user', canActivate:[AuthGuard],component: UserComponent, data:{requiredRole: 'user'},
+        children:
+          [
           {path: 'add', component: AddCharacterComponent}
-        ]},
-      {path: 'employee', canActivate:[AuthGuard],component: EmployeeComponent, data:{requiredRole: 'employee'}},
+        ]
+      },
+      {path: 'employee', canActivate:[AuthGuard],component: EmployeeComponent, data:{requiredRole: 'employee'},
+        children:
+          [
+          {path: 'add', component: AddClassComponent}
+        ]
+      },
       {path: 'admin', canActivate:[AuthGuard], component: AdminComponent, data:{requiredRole: 'admin'}}
     ]
   },

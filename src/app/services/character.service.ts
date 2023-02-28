@@ -7,6 +7,7 @@ import {API_URL} from "../env/endpoint";
 import {HttpClient} from "@angular/common/http";
 import {Class} from "../interfaces/class";
 import {Character} from "../interfaces/character";
+import {Classes} from "../interfaces/classes";
 
 @Injectable({
   providedIn: 'root'
@@ -53,11 +54,19 @@ export class CharacterService {
     this.messageService.updateNotification(`UserService: ${message}`, color)
   }
 
-  getClasses():Observable<Class[]> {
+  getClass():Observable<Class[]> {
     return this.http.get<Class[]>(API_URL + '/clases')
       .pipe(
         tap((data) => console.log(data)),
         catchError(this.handleError<Class[]>('getClasses'))
+      );
+  }
+
+  getClasses() {
+    return this.http.get<Model<Classes>[]>(API_URL + '/clases/classes')
+      .pipe(
+        tap((data) => console.log(data)),
+        catchError(this.handleError<Model<Classes>[]>('getClasses'))
       );
   }
 }

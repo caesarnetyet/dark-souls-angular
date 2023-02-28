@@ -18,7 +18,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
    this.getCharacters()
-    console.log(this.characters)
+
   }
   getCharacters(): void {
     this.characterService.getCharacters()

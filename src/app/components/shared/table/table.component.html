@@ -6,7 +6,7 @@
     </ng-container>
   <th colspan="2">actions</th>
   </thead>
-  <tbody>
+  <tbody>o
     <tr *ngFor="let row of data">
       <td>{{row.id}}</td>
       <ng-container *ngFor="let property of getFields(row.model)">
@@ -14,10 +14,10 @@
       </ng-container>
       <td>
         <button (click)="update(row)" class="button">Actualizar </button>
-        <a [routerLink]="row.actions.delete_url" class="button buttonElim">Borrar</a>
+        <button (click)="delete(row.actions.delete_url)">Borrar</button>
       </td>
     </tr>
   </tbody>
 </table>
 
-<app-form *ngIf="updateRow" method="PUT" [url]="updateRow.actions.update_url"  [data]="updateRow.model"></app-form>
+<app-form *ngIf="updateRow" method="PUT" [path]="updateRow.actions.update_url"  [data]="updateRow.model"></app-form>
