@@ -23,7 +23,7 @@ export class CodigoComponent implements OnInit {
      this.route.queryParams.subscribe(params => {
        this.url = decodeURIComponent(params['url']);
        this.userService.getVerificationCode(this.url).subscribe((data) => {
-         this.verification_url = data;
+         this.verification_url = data.url;
          console.log(data)
        })
      });

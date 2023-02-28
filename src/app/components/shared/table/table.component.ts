@@ -22,7 +22,7 @@ export class TableComponent implements OnInit {
   }
   getHeaders(): string[] {
     if (this.data.length > 0) {
-      return Object.keys(this.data[0].model)
+      return Object.keys(this.data[0].attributes)
     }
     return []
   }

@@ -15,6 +15,7 @@ export class NotificationComponent implements OnInit{
   ngOnInit(): void {
     this.messageService.notificationChanged.subscribe(notification => {
       this.notification = notification
+      console.log(this.notification.message)
     })
   }
 

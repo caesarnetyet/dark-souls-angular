@@ -6,10 +6,12 @@
     <hr>
   </div>
   <div>
-    <h2 class="message">
-      {{ notification.message }}
-    </h2>
+    <h2 class="message">{{notification.message.message}}</h2>
+    <ng-template *ngFor="let error of notification.message.error | keyvalue">
+      <h2 class="error">{{error.key}}: {{error.value}}</h2>
+    </ng-template>
   </div>
+
   <hr>
   <button class="but w-full" (click)="changeShow()">Cerrar</button>
 </div>

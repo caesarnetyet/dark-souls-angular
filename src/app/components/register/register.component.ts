@@ -16,7 +16,7 @@ export class RegisterComponent {
     name: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
-    phone_number: ['', Validators.required]
+    phone: ['', Validators.required]
   });
 
   constructor(
@@ -39,7 +39,7 @@ export class RegisterComponent {
       const user: User = {
         name: this.registerForm.value.name ?? '',
         email: this.registerForm.value.email ?? '',
-        phone_number: this.registerForm.value.phone_number ?? '',
+        phone: this.registerForm.value.phone?? '',
         role:'',
         password: this.registerForm.value.password ?? ''
       }

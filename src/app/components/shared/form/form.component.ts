@@ -12,7 +12,6 @@ export class FormComponent implements OnInit{
   @Input() data: { [key: string]: any } = {};
   @Input() path: string = '';
   @Input() method: string = 'POST';
-  
   @Input() select: object[] = []
 
   @Input() title: string = '';

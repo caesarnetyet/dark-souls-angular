@@ -1,13 +1,16 @@
 import {Injectable} from '@angular/core';
 import {catchError, Observable, of, tap} from "rxjs";
 import {Model} from "../interfaces/model";
-import {CharacterData} from "../interfaces/characterData";
+import {Character} from "../interfaces/character";
 import {MessagesService} from "./messages.service";
 import {API_URL} from "../env/endpoint";
 import {HttpClient} from "@angular/common/http";
+<<<<<<< HEAD
 import {Class} from "../interfaces/class";
 import {Character} from "../interfaces/character";
 import {Classes} from "../interfaces/classes";
+=======
+>>>>>>> 26e0b01131e65c1b8d3bd1979138df062c2fc0f0
 
 @Injectable({
   providedIn: 'root'
@@ -16,17 +19,8 @@ export class CharacterService {
 
   constructor(private messageService: MessagesService, private http: HttpClient) {}
 
-
-
-  addCharacter(character: CharacterData): Observable<Model<CharacterData>> {
-    return this.http.post<Model<CharacterData>>(API_URL + '/personajes', character)
-      .pipe(
-        tap((data) => console.log(data)),
-        catchError(this.handleError<Model<CharacterData>>('addCharacter'))
-      );
-  }
   getCharacters(): Observable<Model<Character>[]>{
-    return this.http.get<Model<Character>[]>(API_URL + '/personajes')
+    return this.http.get<Model<Character>[]>(API_URL + '/characters')
       .pipe(
         tap((data) => console.log(data)),
         catchError(this.handleError<Model<Character>[]>('getCharacters'))
@@ -37,7 +31,7 @@ export class CharacterService {
       console.log(error)
       switch(error.status){
         case 401:
-          this.log('No autorizado', 'red')
+          this.log(`${operation}`, 'red')
           break;
         case 500:
           this.log(`${operation} failed: ${error.message}`, 'red')
@@ -54,6 +48,7 @@ export class CharacterService {
     this.messageService.updateNotification(`UserService: ${message}`, color)
   }
 
+<<<<<<< HEAD
   getClass():Observable<Class[]> {
     return this.http.get<Class[]>(API_URL + '/clases')
       .pipe(
@@ -69,4 +64,6 @@ export class CharacterService {
         catchError(this.handleError<Model<Classes>[]>('getClasses'))
       );
   }
+=======
+>>>>>>> 26e0b01131e65c1b8d3bd1979138df062c2fc0f0
 }
