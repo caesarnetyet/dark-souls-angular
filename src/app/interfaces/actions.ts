@@ -1,4 +1,4 @@
 export interface Actions {
   delete_url: string,
-  update_url: string
+  edit_url: string
 }

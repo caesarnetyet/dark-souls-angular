@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Model} from "../../../interfaces/model";
 
 import {UserService} from "../../../services/user/user.service";
@@ -11,12 +11,15 @@ import {UserService} from "../../../services/user/user.service";
 })
 export class TableComponent implements OnInit {
   @Input() data: Model<object>[] = [];
+  @Output() updateEvent = new EventEmitter<Model<any>>();
+  @Output() deleteEvent = new EventEmitter<string>();
   updateRow?: Model<object>;
 
   constructor(private userService: UserService ) {}
 
 
   async ngOnInit() {
+
   }
 
   getFields(model: Object) {
@@ -28,12 +31,15 @@ export class TableComponent implements OnInit {
 
   update(row: Model<object>) {
     this.updateRow = row
+    console.log(this.updateRow)
   }
 
   delete(delete_url: string) {
     this.userService.delete(delete_url).subscribe(
       (data) => console.log(data)
+
     )
+    this.deleteEvent.emit(delete_url)
     }
 
 }

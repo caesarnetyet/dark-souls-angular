@@ -1,5 +1,5 @@
 <app-dashboard [anchors]="anchors"></app-dashboard>
 <div class="div" >
-<app-table [data]="characters"></app-table>
+<app-table (deleteEvent)="deleteCharacter($event)" [data]="characters"></app-table>
 <router-outlet></router-outlet>
 </div>

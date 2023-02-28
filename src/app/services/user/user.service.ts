@@ -94,6 +94,7 @@ export class UserService {
 
 
   genericRequest(path: string, method: string, body: object): Observable<any> {
+    console.log(path, method, body)
     return this.http.request(method, path, {body: body})
       .pipe(
         tap(() => this.log('generic request')),

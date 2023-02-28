@@ -25,4 +25,12 @@ export class UserComponent implements OnInit {
       .subscribe(characters => this.characters = characters)
   }
 
+  // updateCharacter($row: Model<Character>) {
+  //   const characterIndex = this.characters.findIndex((character) => character.id === $row.id)
+  //   this.characters[characterIndex] = $row
+  // }
+
+  deleteCharacter($row: string) {
+    this.characters = this.characters.filter((character) => character.actions.delete_url === $row);
+  }
 }

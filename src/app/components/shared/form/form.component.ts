@@ -35,7 +35,7 @@ export class FormComponent implements OnInit{
   getHeaders(): string[] {return Object.keys(this.form.controls)}
 
   submit() {
-    console.log('CLick')
+    console.log(this.path)
     this.userService.genericRequest(this.path, this.method, this.form.value).subscribe(
       (data) => {
         console.log(data)

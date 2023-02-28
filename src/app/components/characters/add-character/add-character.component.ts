@@ -21,7 +21,8 @@ export class AddCharacterComponent implements OnInit{
   constructor(private characterService: CharacterService,
               private fb:FormBuilder,
               private location: Location,
-              private messageService: MessagesService)   { }
+              private messageService: MessagesService,
+              )   { }
   classes?: Class[];
 
 
@@ -56,6 +57,7 @@ ngOnInit(): void {
       }
       this.characterService.addCharacter(character).subscribe((() => {
         console.log('added character.ts')
+
       }))
     }
   }
