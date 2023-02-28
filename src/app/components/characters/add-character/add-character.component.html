@@ -1,17 +1,16 @@
-<div *ngIf="classes" class="div">
+<div *ngIf="classes" class="add">
   <div class="divInterno">
     <form (ngSubmit)="onSubmit()" [formGroup]="characterForm">
       <h1>Creando Personaje</h1>
       <h2>Nombre</h2>
       <input  class="text-black" type="text" formControlName="name">
-      <h2>Telefono</h2>
+      <h2>Selecciona una Clase</h2>
     <select formControlName="class">
         <ng-container *ngFor="let class_ of classes">
           <option class="text-black" value="{{class_.id}}">{{class_.name}}</option>
         </ng-container>
-
       </select>
-      <button type="submit">Registrarse</button>
+      <button type="submit">Crear persona</button>
     </form>
   </div>
 </div>
