@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MessagesService} from "../../services/messages.service";
-import {Notification} from "../../interfaces/notification";
-import {Validators} from "@angular/forms";
+import {Notification, Message} from "../../interfaces/notification";
+
+;
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
@@ -9,6 +10,7 @@ import {Validators} from "@angular/forms";
 })
 export class NotificationComponent implements OnInit{
   notification?: Notification
+  errorHeaders: string[] = [];
 
   constructor(private messageService: MessagesService) {
   }
@@ -16,13 +18,15 @@ export class NotificationComponent implements OnInit{
   ngOnInit(): void {
     this.messageService.notificationChanged.subscribe(notification => {
       this.notification = notification
-      console.log(this.notification.message)
+      console.log(this.notification)
+
     })
 
   }
 
-
   changeShow() {
     this.notification = undefined
   }
+
+
 }

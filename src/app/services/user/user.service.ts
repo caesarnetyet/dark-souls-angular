@@ -30,13 +30,13 @@ export class UserService {
       console.log(error.error)
       switch(error.status){
         case 401:
-          this.log(`No tienes acceso ${JSON.stringify(error.error)}`, 'red')
+          this.log(JSON.stringify(error.error.error), 'red')
           break;
         case 500:
           this.log(`${operation} failed: ${error.message}`, 'red')
           break;
         default:
-          this.log(`No tienes acceso ${JSON.stringify(error.error.error)}`, 'red')
+          this.log(JSON.stringify(error.error.error), 'red')
       }
 
       // Let the app keep running by returning an empty result.
@@ -45,8 +45,8 @@ export class UserService {
   }
 
 
-  private log (message: string, color: string = 'green') {
-    this.messageService.updateNotification(`UserService: ${message}`, color)
+  private log (message: string | Message, color: string = 'green') {
+    this.messageService.updateNotification(message, color)
   }
 
 
