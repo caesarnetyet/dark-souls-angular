@@ -1,7 +1,7 @@
 <table *ngIf="data.length" class="tabla">
   <thead>
   <th>id</th>
-    <ng-container *ngFor="let header of headers">
+    <ng-container *ngFor="let header of getHeaders(data[0].attributes)">
       <th>{{header}}</th>
     </ng-container>
   <th colspan="2">actions</th>

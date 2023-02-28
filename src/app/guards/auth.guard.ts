@@ -15,19 +15,18 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return this.userService.getUser().pipe(
       map((user) => {
-        if (user) {
-          console.log(user.attributes.role)
-          const role = route.data['requiredRole'];
-          if (user.attributes.role === role) {
-            return true;
-          } else {
-            this.router.navigate([`/dashboard/${user.attributes.role}`]).then(r => console.log(r));
-            return false;
-          }
-        } else {
+        if (!user) {
           this.router.navigate(['/chibi']).then(r => console.log(r));
           return false;
         }
+        const role = route.data['requiredRole'];
+        if (user.attributes.role === role) {
+          return true;
+        } else {
+          this.router.navigate([`/dashboard/${user.attributes.role}`]).then(r => console.log(r));
+          return false;
+        }
+
       })
     );
   }

@@ -1,8 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Model} from "../../../interfaces/model";
-import {ModelData} from "../../../interfaces/modelData";
-import {UserService} from "../../../services/user/user.service";
 
+import {UserService} from "../../../services/user/user.service";
 
 
 @Component({
@@ -12,25 +11,20 @@ import {UserService} from "../../../services/user/user.service";
 })
 export class TableComponent implements OnInit {
   @Input() data: Model<object>[] = [];
-  headers?: string[] = [];
   updateRow?: Model<object>;
 
   constructor(private userService: UserService ) {}
 
-  ngOnInit(): void {
-    this.headers = this.getHeaders()
-  }
-  getHeaders(): string[] {
-    if (this.data.length > 0) {
-      return Object.keys(this.data[0].attributes)
-    }
-    return []
+
+  async ngOnInit() {
   }
 
   getFields(model: Object) {
     return Object.values(model)
   }
-
+  getHeaders(header: object) : string[]{
+    return Object.keys(header)
+  }
 
   update(row: Model<object>) {
     this.updateRow = row
