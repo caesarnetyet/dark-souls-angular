@@ -3,7 +3,6 @@ import {Anchor} from "../../interfaces/anchor";
 import {Model} from "../../interfaces/model";
 import {CharacterService} from "../../services/character.service";
 import {Character} from "../../interfaces/character";
-import {Class} from "../../interfaces/class";
 
 @Component({
   selector: 'app-user',

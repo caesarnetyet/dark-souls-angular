@@ -2,11 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {CharacterService} from "../../../services/character.service";
 import {Class} from "../../../interfaces/class";
 import {FormBuilder, Validators} from "@angular/forms";
-import {CharacterData} from "../../../interfaces/characterData";
+
 import {Location} from "@angular/common";
 import {MessagesService} from "../../../services/messages.service";
 import {Character} from "../../../interfaces/character";
 import {Router} from "@angular/router";
+import {UserService} from "../../../services/user/user.service";
 
 @Component({
 selector: 'app-add-character.ts',
@@ -24,6 +25,8 @@ export class AddCharacterComponent implements OnInit{
               private location: Location,
               private router: Router,
               private messageService: MessagesService,
+
+              private userService: UserService
               )   { }
   classes?: Class[];
 
