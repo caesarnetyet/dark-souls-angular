@@ -31,6 +31,6 @@ export class UserComponent implements OnInit {
   }
 
   deleteCharacter($row: string) {
-    this.characters = this.characters.filter((character) => character.actions.delete_url === $row);
+    this.characters = this.characters.filter((character) => character.actions.delete_url !== $row);
   }
 }

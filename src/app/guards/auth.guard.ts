@@ -15,21 +15,24 @@ export class AuthGuard implements CanActivate {
     return this.userService.getUser().pipe(
       map((user) => {
         if (!user) {
+          localStorage.removeItem('token')
           this.messageService.updateNotification('Usuario no logueado', 'red')
           this.router.navigate(['/chibi']).then(r => console.log(r));
           return false;
         }
         if (!user.attributes.active){
+          localStorage.removeItem('token')
           this.messageService.updateNotification('Usuario no activo', 'red')
           this.router.navigate(['/chibi']).then(r => console.log(r));
           return false;
-        }
-        const role = route.data['requiredRole'];
-        if (user.attributes.role === role) {
-          return true;
-        } else {
-          this.router.navigate([`/dashboard/${user.attributes.role}`]).then(r => console.log(r));
-          return false;
+        }else{
+          const role = route.data['requiredRole'];
+          if (user.attributes.role === role) {
+            return true;
+          } else {
+            this.router.navigate([`/dashboard/${user.attributes.role}`]).then(r => console.log(r));
+            return false;
+          }
         }
 
       })

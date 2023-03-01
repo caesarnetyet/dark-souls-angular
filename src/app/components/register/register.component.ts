@@ -31,7 +31,7 @@ export class RegisterComponent {
   onSubmit() {
     console.log('clicked submit')
     if (this.registerForm.invalid){
-      this.messageService.updateNotification('Formulario invalido', 'Error', 'red')
+      this.messageService.updateNotification('Formulario invalido', 'red', 'Error')
 
     }
 

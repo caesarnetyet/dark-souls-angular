@@ -18,8 +18,12 @@ export class AdminComponent implements  OnInit{
   }
   ngOnInit() {
     this.getUsers()
+
   }
   getUsers(): void {
-    this.userService.getUsers().subscribe(users => this.users = users)
+    this.userService.getUsers().subscribe(users => {
+      this.users = users
+      console.log(users)
+    })
   }
 }

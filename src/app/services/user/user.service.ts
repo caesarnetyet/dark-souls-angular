@@ -60,7 +60,7 @@ export class UserService {
   }
   getVerificationCode(signedUrl: string): Observable<any> {
     return this.http.get<string>(signedUrl).pipe(
-      tap(() => this.log('fetched verification code')),
+      tap(() => this.log('Codigo de verificacion enviado')),
       catchError(this.handleError<any>('getVerificationCode'))
     )
   }

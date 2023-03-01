@@ -6,6 +6,7 @@ import {CharacterData} from "../../../interfaces/characterData";
 import {Location} from "@angular/common";
 import {MessagesService} from "../../../services/messages.service";
 import {Character} from "../../../interfaces/character";
+import {Router} from "@angular/router";
 
 @Component({
 selector: 'app-add-character.ts',
@@ -21,6 +22,7 @@ export class AddCharacterComponent implements OnInit{
   constructor(private characterService: CharacterService,
               private fb:FormBuilder,
               private location: Location,
+              private router: Router,
               private messageService: MessagesService,
               )   { }
   classes?: Class[];
@@ -41,7 +43,7 @@ ngOnInit(): void {
   if (message) {
     this.messageService.updateNotification(message, 'red', 'No encontrado')
   }
-    this.location.back();
+    this.location.back()
   }
 
   onSubmit() {
@@ -58,6 +60,7 @@ ngOnInit(): void {
       this.characterService.addCharacter(character).subscribe((() => {
         console.log('added character.ts')
         this.goBack()
+
       }))
     }
   }

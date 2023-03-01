@@ -32,9 +32,13 @@ export class FormComponent implements OnInit{
   private goBack() {
     this.location.back()
   }
-  getHeaders(): string[] {return Object.keys(this.form.controls)}
+  getHeaders(): string[] {
+
+    return Object.keys(this.form.controls)
+  }
 
   submit() {
+    console.log(this.form.value)
     console.log(this.path)
     this.userService.genericRequest(this.path, this.method, this.form.value).subscribe(
       (data) => {
