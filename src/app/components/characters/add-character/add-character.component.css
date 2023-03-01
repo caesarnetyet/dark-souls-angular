@@ -58,3 +58,17 @@ select
   cursor: pointer;
   margin-bottom: 15px;
 }
+.cerrar
+{
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #4caf4f00;
+}
