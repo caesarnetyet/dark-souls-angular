@@ -14,9 +14,13 @@ export class TableComponent implements OnInit {
   @Output() updateEvent = new EventEmitter<Model<any>>();
   @Output() deleteEvent = new EventEmitter<string>();
   updateRow?: Model<object>;
+  mostrarHijo!: boolean;
 
   constructor(private userService: UserService ) {}
 
+  private onCerrarHijo(cerrado: boolean) {
+    this.mostrarHijo = !cerrado;
+  }
 
   async ngOnInit() {
   }
@@ -29,6 +33,7 @@ export class TableComponent implements OnInit {
   }
 
   update(row: Model<object>) {
+    this.onCerrarHijo(this.mostrarHijo)
     this.updateRow = row
     this.updateEvent.emit(row)
   }
