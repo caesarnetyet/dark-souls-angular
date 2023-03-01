@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../services/user/user.service";
 import {Location} from "@angular/common";
@@ -15,16 +15,11 @@ export class FormComponent implements OnInit{
   @Input() data: { [key: string]: any } = {};
   @Input() path: string = '';
   @Input() method: string = 'POST';
-
-  @Input() select: object[] = [];
-  mostrar = true;
-  @Output() cerrado = new EventEmitter<boolean>();
   @Input() select: {id: number, name: string}[] = []
   @Input() selectName: string = ''
   @Input() mostrar: boolean = true;
 
   headers: string[] = [];
-
   @Input() title: string = '';
   form: FormGroup = new FormGroup({});
 
@@ -45,11 +40,6 @@ export class FormComponent implements OnInit{
       formControls[key] = [data[key], Validators.required, ];
     });
     return formControls;
-  }
-  cerrar()
-  {
-    this.mostrar = !this.mostrar;
-    this.cerrado.emit(!this.mostrar);
   }
   private goBack() {
     this.location.back()
