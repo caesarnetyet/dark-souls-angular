@@ -18,7 +18,7 @@ export class FormComponent implements OnInit{
 
   @Input() select: {id: number, name: string}[] = []
   @Input() selectName: string = ''
-  @Input() mostrar: boolean = true;
+
 
   headers: string[] = [];
 

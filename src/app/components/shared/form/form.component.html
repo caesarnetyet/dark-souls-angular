@@ -17,8 +17,8 @@
     </div>
     <ng-template [ngIf]="select.length > 0">
       <label for="select">Select</label>
-      <select id="select" class="text-black" name="select" [formControlName]="selectName">
-        <option class="text-black" *ngFor="let option of select" [value]="option.id">{{option.name}}</option>
+      <select [value]="1"  id="select" class="text-black" name="select" [formControlName]="selectName">
+        <option  class="text-black" *ngFor="let option of select" [value]="option.id">{{option.name}}</option>
       </select>
     </ng-template>
 
