@@ -38,7 +38,6 @@ ngOnInit(): void {
       ? this.classes = classes
       : this.goBack('No se encontraron clases'))
   }
-
   goBack(message: string = ''): void {
   if (message) {
     this.messageService.updateNotification(message, 'red', 'No encontrado')
