@@ -11,6 +11,8 @@ import {UserService} from "../../../services/user/user.service";
 })
 export class TableComponent implements OnInit {
   @Input() data: Model<object>[] = [];
+
+  @Input() select?: object[] = [];
   @Output() updateEvent = new EventEmitter<Model<any>>();
   @Output() deleteEvent = new EventEmitter<string>();
   updateRow?: Model<object>;
