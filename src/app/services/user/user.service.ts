@@ -106,4 +106,12 @@ export class UserService {
         catchError(this.handleError<Model<User>[]>('getUsers', []))
       );
   }
+
+
+  getRoles(): Observable<{id: number, name: string}[]> {
+    return this.http.get<{id: number, name: string}[]>(API_URL + '/roles')
+      .pipe(
+        catchError(this.handleError<{id: number, name: string}[]>('getRoles', []))
+      );
+  }
 }

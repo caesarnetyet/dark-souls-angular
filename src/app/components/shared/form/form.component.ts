@@ -2,6 +2,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../services/user/user.service";
 import {Location} from "@angular/common";
+import {CharacterService} from "../../../services/character.service";
+
+
 
 @Component({
   selector: 'app-form',
@@ -12,20 +15,33 @@ export class FormComponent implements OnInit{
   @Input() data: { [key: string]: any } = {};
   @Input() path: string = '';
   @Input() method: string = 'POST';
-  @Input() select: object[] = [];
+
+  @Input() select: {id: number, name: string}[] = []
+  @Input() selectName: string = ''
+  @Input() mostrar: boolean = true;
+
+  headers: string[] = [];
+
   mostrar = true;
   @Output() cerrado = new EventEmitter<boolean>();
+
   @Input() title: string = '';
   form: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder,private userService: UserService, private location: Location) { }
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService,
+              private location: Location,
+              private characterService: CharacterService) { }
   ngOnInit() {
     this.form = this.formBuilder.group(this.generateFormControls(this.data));
+    this.headers = this.getHeaders()
   }
 
   private generateFormControls(data: { [key: string]: any }) {
     const formControls : { [key: string]: any} = {};
+
     Object.keys(data).forEach(key => {
+
       formControls[key] = [data[key], Validators.required, ];
     });
     return formControls;
@@ -39,8 +55,31 @@ export class FormComponent implements OnInit{
     this.location.back()
   }
   getHeaders(): string[] {
+    const headers: string[] = [];
+    let control = Object.keys(this.form.controls)
+    for (let i = 0; i < control.length; i++) {
+      switch(control[i]) {
+        case 'class':
+          this.selectName = 'class'
+          this.getClasses()
+          break;
+        case 'role':
+          this.selectName = 'role'
+          this.getRoles()
+          break;
 
-    return Object.keys(this.form.controls)
+        default:
+          headers.push(control[i])
+      }
+    }
+    return headers
+  }
+
+  private getClasses() {
+    this.characterService.getClass().subscribe(data => {
+      this.select = data
+      console.log(this.select)
+    })
   }
 
   submit() {
@@ -53,5 +92,12 @@ export class FormComponent implements OnInit{
       }
     )
 
+  }
+
+  private getRoles() {
+    this.userService.getRoles().subscribe(data => {
+      this.select = data
+      console.log(this.select)
+    })
   }
 }

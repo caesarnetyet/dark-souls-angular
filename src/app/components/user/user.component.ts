@@ -3,6 +3,7 @@ import {Anchor} from "../../interfaces/anchor";
 import {Model} from "../../interfaces/model";
 import {CharacterService} from "../../services/character.service";
 import {Character} from "../../interfaces/character";
+import {Class} from "../../interfaces/class";
 
 @Component({
   selector: 'app-user',
@@ -14,6 +15,7 @@ export class UserComponent implements OnInit {
     {name: 'Agregar personaje', url: 'add'}
     ];
   characters: Model<Character>[] = []
+
   constructor(private characterService: CharacterService) { }
 
   ngOnInit(): void {
@@ -24,6 +26,7 @@ export class UserComponent implements OnInit {
     this.characterService.getCharacters()
       .subscribe(characters => this.characters = characters)
   }
+
 
   updateCharacter($row: Model<Character>) {
     const characterIndex = this.characters.findIndex((character) => character.id === $row.id)

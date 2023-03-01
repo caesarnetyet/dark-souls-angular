@@ -70,4 +70,6 @@ export class CharacterService {
         catchError(this.handleError<Model<Classes>[]>('getClasses'))
       );
   }
+
+
 }
