@@ -1,17 +1,17 @@
-<div *ngIf="notification" class="notification  {{notification.color}}">
-  <div >
+<div *ngIf="notification" class="notification  {{ notification.color }}">
+  <div>
     <h1 class="titulo">
       {{ notification.title }}
     </h1>
-    <hr>
+    <hr />
   </div>
   <div>
-    <h2 class="message">{{notification.message.message}}</h2>
-<!--    <ng-template *ngFor="let error of errorHeaders">-->
-<!--      <h2 class="error">{{error}}</h2>-->
-<!--    </ng-template>-->
+    <h2 class="message">{{ notification.message.message }}</h2>
+    <!--    <ng-template *ngFor="let error of errorHeaders">-->
+    <!--      <h2 class="error">{{error}}</h2>-->
+    <!--    </ng-template>-->
   </div>
 
-  <hr>
+  <hr />
   <button class="but w-full" (click)="changeShow()">Cerrar</button>
 </div>

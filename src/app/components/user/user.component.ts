@@ -19,11 +19,13 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
    this.getCharacters()
-
   }
   getCharacters(): void {
     this.characterService.getCharacters()
-      .subscribe(characters => this.characters = characters)
+      .subscribe(characters => {
+        console.log(characters)
+        this.characters = characters
+      })
   }
 
 

@@ -18,7 +18,7 @@ export class TableComponent implements OnInit {
   updateRow?: Model<object>;
   mostrarHijo!: boolean;
 
-  constructor(private userService: UserService ) {}
+  constructor(private userService: UserService) {}
 
   private onCerrarHijo(cerrado: boolean) {
     this.mostrarHijo = !cerrado;
@@ -28,6 +28,7 @@ export class TableComponent implements OnInit {
   }
 
   getFields(model: Object) {
+
     return Object.values(model)
   }
   getHeaders(header: object) : string[]{
@@ -42,6 +43,7 @@ export class TableComponent implements OnInit {
 
   delete(delete_url: string) {
     const response = confirm('¿Estas seguro de eliminar este registro?')
+    if (response) console.log(delete_url)
     if (response) {
       this.userService.delete(delete_url).subscribe(
         (data) => console.log(data)
@@ -49,7 +51,5 @@ export class TableComponent implements OnInit {
       )
       this.deleteEvent.emit(delete_url)
     }
-
   }
-
 }

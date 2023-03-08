@@ -1,3 +1,6 @@
 export interface Token {
-  token: string
+  token: {
+    token: string,
+    type: string
+  }
 }
