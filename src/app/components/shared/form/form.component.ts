@@ -88,7 +88,7 @@ export class FormComponent implements OnInit{
     this.userService.genericRequest(this.path, this.method, this.form.value).subscribe(
       (data) => {
         console.log(data)
-        this.goBack()
+
       }
     )
 

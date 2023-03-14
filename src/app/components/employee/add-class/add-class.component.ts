@@ -10,6 +10,6 @@ export class AddClassComponent {
   model  = {
     name: '',
   }
-  path = API_URL + '/class'
+  path = '/class'
 
 }

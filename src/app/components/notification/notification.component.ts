@@ -10,7 +10,6 @@ import {Notification, Message} from "../../interfaces/notification";
 })
 export class NotificationComponent implements OnInit{
   notification?: Notification
-  errorHeaders: string[] = [];
 
   constructor(private messageService: MessagesService) {
   }
@@ -19,8 +18,8 @@ export class NotificationComponent implements OnInit{
     this.messageService.notificationChanged.subscribe(notification => {
       this.notification = notification
       console.log(this.notification)
-
     })
+    this.messageService.listenSocket()
 
   }
 

@@ -8,7 +8,7 @@ import { Login } from '../../interfaces/login';
 import { Token } from '../../interfaces/token';
 import { Message } from '../../interfaces/notification';
 import { Model } from '../../interfaces/model';
-
+import {socket} from "../../env/socket";
 @Injectable({
   providedIn: 'root',
 })
@@ -17,6 +17,9 @@ export class UserService {
     private http: HttpClient,
     private messageService: MessagesService
   ) {}
+
+
+
 
   addUser(user: User): Observable<Message> {
     return this.http.post<Message>(API_URL + '/user', user).pipe(

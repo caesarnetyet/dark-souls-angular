@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {catchError, Observable, of, tap} from "rxjs";
+import {ApplicationRef, ChangeDetectorRef, Injectable} from '@angular/core';
+import {BehaviorSubject, catchError, Observable, of, Subject, tap} from "rxjs";
 import {Model} from "../interfaces/model";
 import {MessagesService} from "./messages.service";
 import {API_URL} from "../env/endpoint";
@@ -8,26 +8,51 @@ import {Class} from "../interfaces/class";
 import {Character} from "../interfaces/character";
 import {Classes} from "../interfaces/classes";
 
+
+import {socket} from "../env/socket";
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class CharacterService {
 
-  constructor(private messageService: MessagesService, private http: HttpClient) {
+
+  characters: BehaviorSubject<Model<Character>[]> = new BehaviorSubject<Model<Character>[]>([])
+
+  constructor(private messageService: MessagesService, private http: HttpClient,private ref: ApplicationRef) {
   }
 
+
+  listenSocket( ){
+    socket.on('updateCharacter', (data: any) => {
+      console.log(data)
+      this.updateCharacters();
+     
+    })
+
+
+  }
   getCharacters(): Observable<Model<Character>[]> {
     return this.http.get<Model<Character>[]>(API_URL + '/characters')
       .pipe(
-        tap((data) => console.log(data)),
+        tap((data) => this.characters.next(data)),
         catchError(this.handleError<Model<Character>[]>('getCharacters'))
       );
+  }
+
+  updateCharacters() {
+    this.getCharacters().subscribe((data) => {
+      this.characters.next(data)
+    })
   }
 
   addCharacter(character: Character): Observable<Model<Character>> {
     return this.http.post<Model<Character>>(API_URL + '/character', character)
       .pipe(
-        tap((data) => console.log(data)),
+        tap(() => {
+          this.updateCharacters()
+  }),
         catchError(this.handleError<Model<Character>>('addCharacter'))
       );
   }

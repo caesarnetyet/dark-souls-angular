@@ -7,7 +7,7 @@ import {Location} from "@angular/common";
 import {MessagesService} from "../../../services/messages.service";
 import {Character} from "../../../interfaces/character";
 import {Router} from "@angular/router";
-import {UserService} from "../../../services/user/user.service";
+import { socket } from "../../../env/socket";
 
 @Component({
 selector: 'app-add-character.ts',
@@ -25,8 +25,6 @@ export class AddCharacterComponent implements OnInit{
               private location: Location,
               private router: Router,
               private messageService: MessagesService,
-
-              private userService: UserService
               )   { }
   classes?: Class[];
 
@@ -60,8 +58,9 @@ ngOnInit(): void {
         class_id: this.characterForm.value.class ?? 0
       }
       this.characterService.addCharacter(character).subscribe((() => {
-        console.log('added character.ts')
-        this.goBack()
+        socket.emit('addCharacter', {data: 'data'} )
+        this.messageService.updateNotification('Personaje agregado', 'green', 'Agregado')
+        this.router.navigate(['/dashboard/user'])
 
       }))
     }
