@@ -1,0 +1,8 @@
+<h1 *ngIf="!active">
+    <i class="fas fa-exclamation-triangle"></i>
+    <span class="text-red-500">El servidor no esta activo</span>
+</h1>
+<h1 *ngIf="active">
+    <i class="fas fa-check-circle"></i>
+    <span class="text-green-500">El servidor esta activo desde hace: {{uptime}} minutos</span>
+</h1>

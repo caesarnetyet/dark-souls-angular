@@ -1,4 +1,4 @@
 <app-dashboard [anchors]="anchors"></app-dashboard>
 <div class="div">
-<app-table [data]="users"></app-table>
+<app-table (updateEvent)="updateUser($event)" (deleteEvent)="deleteUser($event)" [data]="users"></app-table>
 </div>

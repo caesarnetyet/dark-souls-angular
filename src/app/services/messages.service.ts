@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Subject} from "rxjs";
+import {Subject, Observable} from "rxjs";
 import {Notification, Message} from "../interfaces/notification";
-import {socket} from "../env/socket";
+
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class MessagesService {
   }
 
   notificationChanged: Subject<Notification> = new Subject<Notification>();
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
 
 
@@ -32,5 +33,7 @@ export class MessagesService {
     this.notificationChanged.next(this.properties);
   }
 
-
+  
+  
+  
 }

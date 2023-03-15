@@ -55,9 +55,7 @@ export class FormComponent implements OnInit{
     this.mostrar = !this.mostrar;
     this.cerrado.emit(!this.mostrar);
   }
-  private goBack() {
-    this.location.back()
-  }
+  
   getHeaders(): string[] {
     const headers: string[] = [];
     let control = Object.keys(this.form.controls)

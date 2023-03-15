@@ -10,7 +10,7 @@ import {socket} from "../../env/socket";
   styleUrls: ['./notification.component.css']
 })
 export class NotificationComponent implements OnInit{
-  notification?: Notification
+  notification: Notification | null = null
 
   constructor(private messageService: MessagesService,
               private cd: ChangeDetectorRef) {
@@ -39,7 +39,7 @@ export class NotificationComponent implements OnInit{
 
   }
   changeShow() {
-    this.notification = undefined
+    this.notification = null
   }
 
 

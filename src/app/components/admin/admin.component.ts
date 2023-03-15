@@ -26,4 +26,12 @@ export class AdminComponent implements  OnInit{
       console.log(users)
     })
   }
+  updateUser($row: Model<User>) {
+    const characterIndex = this.users.findIndex((character) => character.id === $row.id)
+    this.users[characterIndex] = $row
+  }
+
+  deleteUser($row: string) {
+    this.users = this.users.filter((character) => character.actions.delete_url !== $row);
+  }
 }

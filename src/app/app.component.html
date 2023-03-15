@@ -1,5 +1,6 @@
 <nav class="flex justify-between text-white font-bold items-center gap-3 py-3 px-5 bg-slate-900">
   <a routerLink="chibi"><h1>Dark Souls APP®</h1></a>
+  <app-uptime></app-uptime>
   <div class="flex gap-3">
     <ng-container *ngIf="authToken">
       <a class="button" (click)="eliminarToken()" routerLink="chibi">Cerrar Sesion</a>

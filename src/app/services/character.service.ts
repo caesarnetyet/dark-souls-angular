@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
 import {Class} from "../interfaces/class";
 import {Character} from "../interfaces/character";
 import {Classes} from "../interfaces/classes";
+import Emittery from 'emittery';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,11 @@ export class CharacterService {
   }
 
   getCharacters(): Observable<Model<Character>[]> {
+    const source = new EventSource(API_URL+ "/addclass");
+    source.addEventListener('new:class', (event) => {
+      const data = JSON.parse(event.data);
+      console.log(data)
+    });
     return this.http.get<Model<Character>[]>(API_URL + '/characters')
       .pipe(
         tap((data) => this.characters.next(data)),

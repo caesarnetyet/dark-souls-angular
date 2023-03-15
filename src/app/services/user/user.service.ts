@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable, of, Subject, tap } from 'rxjs';
+import { catchError, Observable, of, Subject, BehaviorSubject,tap } from 'rxjs';
 import { API_URL } from '../../env/endpoint';
 import { User } from '../../interfaces/user';
 import { MessagesService } from '../messages.service';
@@ -15,6 +15,7 @@ import {socket} from "../../env/socket";
 export class UserService {
 
   
+  users: BehaviorSubject<Model<User>[]> = new BehaviorSubject<Model<User>[]>([]);
 
   constructor(
     private http: HttpClient,

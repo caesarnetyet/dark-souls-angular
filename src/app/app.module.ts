@@ -22,6 +22,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
 import { AddCharacterComponent } from './components/characters/add-character/add-character.component';
 import { AddClassComponent } from './components/employee/add-class/add-class.component';
+import { UptimeComponent } from './components/shared/uptime/uptime.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AddClassComponent } from './components/employee/add-class/add-class.com
     InicioSesionComponent,
     AddCharacterComponent,
     AddClassComponent,
+    UptimeComponent,
   ],
     imports: [
         BrowserModule,
