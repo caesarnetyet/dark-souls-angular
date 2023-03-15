@@ -18,17 +18,7 @@ export class MessagesService {
   constructor() { }
 
 
-    listenSocket(){
-      socket.on('addedClass', (data: string) =>{
-        console.log(data)
-        this.updateNotification("La clase"+ data + "ha sido agregada", 'green', 'Clase agregada')
-      })
-      socket.on('deletedClass', (data: string) =>{
-        console.log(data)
-        this.updateNotification("la clase" + data + "ha sido eliminada", 'red', 'Clase eliminada')
-      });
 
-    }
 
     updateNotification(message: string | Message, color: string = 'green', title: string = '') {
 

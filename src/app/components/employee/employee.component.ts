@@ -18,11 +18,10 @@ export class EmployeeComponent implements OnInit {
   constructor(private characterService: CharacterService) { }
 
   ngOnInit(): void {
-    this.getClasses()
+    this.characterService.classes.subscribe((data) => this.classes = data)
+    this.characterService.updateClasses()
   }
 
-  getClasses(): void {
-    this.characterService.getClasses().subscribe(classes => this.classes = classes)
-  }
+
 
 }

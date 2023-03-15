@@ -19,20 +19,11 @@ export class CharacterService {
 
 
   characters: BehaviorSubject<Model<Character>[]> = new BehaviorSubject<Model<Character>[]>([])
+  classes: BehaviorSubject<Model<Classes>[]> = new BehaviorSubject<Model<Classes>[]>([])
 
   constructor(private messageService: MessagesService, private http: HttpClient,private ref: ApplicationRef) {
   }
 
-
-  listenSocket( ){
-    socket.on('updateCharacter', (data: any) => {
-      console.log(data)
-      this.updateCharacters();
-     
-    })
-
-
-  }
   getCharacters(): Observable<Model<Character>[]> {
     return this.http.get<Model<Character>[]>(API_URL + '/characters')
       .pipe(
@@ -91,10 +82,15 @@ export class CharacterService {
   getClasses() {
     return this.http.get<Model<Classes>[]>(API_URL + '/classes')
       .pipe(
-        tap((data) => console.log(data)),
+        tap((data) => this.classes.next(data)),
         catchError(this.handleError<Model<Classes>[]>('getClasses'))
       );
   }
 
 
+  updateClasses() {
+    this.getClasses().subscribe((data) => {
+      this.classes.next(data)
+    })
+  }
 }
