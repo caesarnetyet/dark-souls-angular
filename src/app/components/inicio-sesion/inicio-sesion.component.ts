@@ -20,7 +20,7 @@ export class InicioSesionComponent implements  OnInit{
         (data) => {
           console.log(data)
           localStorage.setItem("token", data.token.token);
-
+          location.reload()
           this.router.navigate(['/dashboard/user'])
         }
       )
@@ -29,6 +29,7 @@ export class InicioSesionComponent implements  OnInit{
 
   ngOnInit(): void {
       if (localStorage.getItem('token')){
+        
         this.router.navigate(['/dashboard/user'])
       }
   }

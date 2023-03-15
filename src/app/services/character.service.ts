@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {catchError, Observable, of, tap} from "rxjs";
+import {catchError, Observable, of, Subject, tap} from "rxjs";
 import {Model} from "../interfaces/model";
 import {MessagesService} from "./messages.service";
 import {API_URL} from "../env/endpoint";
@@ -11,7 +11,11 @@ import {Classes} from "../interfaces/classes";
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class CharacterService {
+
+  characters: Subject<Model<Character>[]> = new Subject<Model<Character>[]>()
 
   constructor(private messageService: MessagesService, private http: HttpClient) {
   }
@@ -61,6 +65,13 @@ export class CharacterService {
         tap((data) => console.log(data)),
         catchError(this.handleError<Class[]>('getClasses'))
       );
+  }
+
+  updateCharacters() {
+    this.getCharacters().subscribe((data) => {
+      this.characters.next(data)
+    }
+    )
   }
 
   getClasses() {

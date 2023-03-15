@@ -18,15 +18,10 @@ export class UserComponent implements OnInit {
   constructor(private characterService: CharacterService) { }
 
   ngOnInit(): void {
-   this.getCharacters()
+   this.characterService.characters.subscribe((characters) => this.characters = characters)
+   this.characterService.getCharacters().subscribe((characters) => this.characterService.characters.next(characters))
   }
-  getCharacters(): void {
-    this.characterService.getCharacters()
-      .subscribe(characters => {
-        console.log(characters)
-        this.characters = characters
-      })
-  }
+ 
 
 
   updateCharacter($row: Model<Character>) {

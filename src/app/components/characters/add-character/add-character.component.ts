@@ -60,9 +60,9 @@ ngOnInit(): void {
         class_id: this.characterForm.value.class ?? 0
       }
       this.characterService.addCharacter(character).subscribe((() => {
-        console.log('added character.ts')
-        this.goBack()
-
+        this.messageService.updateNotification('Personaje creado', 'green', 'Exito')
+        this.characterService.updateCharacters()
+        this.router.navigate(['/dashboard/user'])
       }))
     }
   }

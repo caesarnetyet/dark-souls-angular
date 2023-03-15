@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, Observable, of, Subject, tap } from 'rxjs';
 import { API_URL } from '../../env/endpoint';
 import { User } from '../../interfaces/user';
 import { MessagesService } from '../messages.service';
@@ -13,6 +13,9 @@ import { Model } from '../../interfaces/model';
   providedIn: 'root',
 })
 export class UserService {
+
+  
+
   constructor(
     private http: HttpClient,
     private messageService: MessagesService
@@ -32,16 +35,8 @@ export class UserService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.log(error);
-      switch (error.status) {
-        case 401:
-          this.log(JSON.stringify(error.error.error), 'red');
-          break;
-        case 500:
-          this.log(`${operation} failed: ${error.messages}`, 'red');
-          break;
-        default:
-          this.log(JSON.stringify(error.error.error), 'red');
-      }
+    
+      this.log(JSON.stringify(error.error.errors[0].message), 'red');
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
@@ -91,7 +86,7 @@ export class UserService {
   genericRequest(path: string, method: string, body: object): Observable<any> {
     console.log(path, method, body);
     return this.http.request(method, API_URL+path, { body: body }).pipe(
-      tap(() => this.log('generic request')),
+      tap(() => this.log('Accion Realizada')),
       catchError(this.handleError<any>('generic request'))
     );
   }
