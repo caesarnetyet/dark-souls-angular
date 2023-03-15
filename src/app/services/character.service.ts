@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {catchError, Observable, of, Subject, tap} from "rxjs";
+import {ApplicationRef, ChangeDetectorRef, Injectable} from '@angular/core';
+import {BehaviorSubject, catchError, Observable, of, Subject, tap} from "rxjs";
 import {Model} from "../interfaces/model";
 import {MessagesService} from "./messages.service";
 import {API_URL} from "../env/endpoint";
@@ -15,15 +15,17 @@ import {Classes} from "../interfaces/classes";
 
 export class CharacterService {
 
-  characters: Subject<Model<Character>[]> = new Subject<Model<Character>[]>()
 
-  constructor(private messageService: MessagesService, private http: HttpClient) {
+  characters: BehaviorSubject<Model<Character>[]> = new BehaviorSubject<Model<Character>[]>([])
+  classes: BehaviorSubject<Model<Classes>[]> = new BehaviorSubject<Model<Classes>[]>([])
+
+  constructor(private messageService: MessagesService, private http: HttpClient,private ref: ApplicationRef) {
   }
 
   getCharacters(): Observable<Model<Character>[]> {
     return this.http.get<Model<Character>[]>(API_URL + '/characters')
       .pipe(
-        tap((data) => console.log(data)),
+        tap((data) => this.characters.next(data)),
         catchError(this.handleError<Model<Character>[]>('getCharacters'))
       );
   }
@@ -31,7 +33,9 @@ export class CharacterService {
   addCharacter(character: Character): Observable<Model<Character>> {
     return this.http.post<Model<Character>>(API_URL + '/character', character)
       .pipe(
-        tap((data) => console.log(data)),
+        tap(() => {
+          this.updateCharacters()
+  }),
         catchError(this.handleError<Model<Character>>('addCharacter'))
       );
   }
@@ -77,10 +81,15 @@ export class CharacterService {
   getClasses() {
     return this.http.get<Model<Classes>[]>(API_URL + '/classes')
       .pipe(
-        tap((data) => console.log(data)),
+        tap((data) => this.classes.next(data)),
         catchError(this.handleError<Model<Classes>[]>('getClasses'))
       );
   }
 
 
+  updateClasses() {
+    this.getClasses().subscribe((data) => {
+      this.classes.next(data)
+    })
+  }
 }

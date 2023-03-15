@@ -10,6 +10,6 @@ export class AddClassComponent {
   model  = {
     name: '',
   }
-  path ='/class'
+  path = '/class'
 
 }

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../services/user/user.service";
 import {Location} from "@angular/common";
 import {CharacterService} from "../../../services/character.service";
+import {Router} from "@angular/router";
 
 
 
@@ -14,6 +15,8 @@ import {CharacterService} from "../../../services/character.service";
 export class FormComponent implements OnInit{
   @Input() data: { [key: string]: any } = {};
   @Input() path: string = '';
+
+  @Input() isClass: boolean = false;
   @Input() method: string = 'POST';
 
   @Input() select: {id: number, name: string}[] = []
@@ -31,7 +34,8 @@ export class FormComponent implements OnInit{
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
               private location: Location,
-              private characterService: CharacterService) { }
+              private characterService: CharacterService,
+              private router: Router) { }
   ngOnInit() {
     this.form = this.formBuilder.group(this.generateFormControls(this.data));
     this.headers = this.getHeaders()
@@ -83,16 +87,22 @@ export class FormComponent implements OnInit{
   }
 
   submit() {
+
     console.log(this.form.value)
     console.log(this.path)
     this.userService.genericRequest(this.path, this.method, this.form.value).subscribe(
-      (data) => {
-        console.log(data)
-        this.goBack()
+      () => {
+        if (this.isClass){
+          this.characterService.getClasses().subscribe(data => {
+            this.characterService.classes.next(data)
+            this.router.navigate(['/dashboard/employee'])
+          })
+        }
       }
     )
 
   }
+
 
   private getRoles() {
     this.userService.getRoles().subscribe(data => {

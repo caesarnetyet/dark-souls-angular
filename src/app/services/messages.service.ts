@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Subject} from "rxjs";
 import {Notification, Message} from "../interfaces/notification";
+import {socket} from "../env/socket";
 
 
 @Injectable({
@@ -15,6 +16,9 @@ export class MessagesService {
 
   notificationChanged: Subject<Notification> = new Subject<Notification>();
   constructor() { }
+
+
+
 
     updateNotification(message: string | Message, color: string = 'green', title: string = '') {
 

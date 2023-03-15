@@ -1,8 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Anchor} from "../../interfaces/anchor";
 import {Model} from "../../interfaces/model";
 import {CharacterService} from "../../services/character.service";
 import {Character} from "../../interfaces/character";
+import {socket} from "../../env/socket";
+
+
 
 @Component({
   selector: 'app-user',
@@ -15,11 +18,24 @@ export class UserComponent implements OnInit {
     ];
   characters: Model<Character>[] = []
 
-  constructor(private characterService: CharacterService) { }
+  constructor(private characterService: CharacterService,
+              private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-   this.characterService.characters.subscribe((characters) => this.characters = characters)
-   this.characterService.getCharacters().subscribe((characters) => this.characterService.characters.next(characters))
+
+    this.characterService.characters.subscribe((data) => this.characters = data)
+    this.characterService.updateCharacters()
+    this.listenSocket()
+  }
+
+  listenSocket( ){
+    socket.on('updateCharacter', (data: any) => {
+      console.log(data)
+      this.characterService.getCharacters().subscribe((characters) => {
+        this.characters = characters
+        this.cd.detectChanges();
+      })
+    })
   }
  
 
