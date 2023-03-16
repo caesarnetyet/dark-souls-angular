@@ -17,21 +17,23 @@ export class AdminComponent implements  OnInit{
   constructor(private userService: UserService) {
   }
   ngOnInit() {
-    this.getUsers()
+    this.userService.users.subscribe((data) => this.users = data)
+    setInterval(() => {
+      console.log('logging users')
+      this.userService.updateUsers()
+    }, 5000)
+    this.userService.updateUsers()
 
   }
-  getUsers(): void {
-    this.userService.getUsers().subscribe(users => {
-      this.users = users
-      console.log(users)
-    })
-  }
+
   updateUser($row: Model<User>) {
     const characterIndex = this.users.findIndex((character) => character.id === $row.id)
     this.users[characterIndex] = $row
+    this.userService.updateUsers()
   }
 
   deleteUser($row: string) {
     this.users = this.users.filter((character) => character.actions.delete_url !== $row);
+    this.userService.updateUsers()
   }
 }

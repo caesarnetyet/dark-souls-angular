@@ -12,10 +12,12 @@ import {socket} from "../../env/socket";
 @Injectable({
   providedIn: 'root',
 })
+
+
 export class UserService {
 
-  
   users: BehaviorSubject<Model<User>[]> = new BehaviorSubject<Model<User>[]>([]);
+
 
   constructor(
     private http: HttpClient,
@@ -23,6 +25,11 @@ export class UserService {
   ) {}
 
 
+  updateUsers(){
+    this.getUsers().subscribe(users => {
+      this.users.next(users)
+    })
+  }
 
 
   addUser(user: User): Observable<Message> {
@@ -39,7 +46,7 @@ export class UserService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.log(error);
-    
+
       this.log(JSON.stringify(error.error.errors[0].message), 'red');
 
       // Let the app keep running by returning an empty result.
@@ -104,7 +111,7 @@ export class UserService {
 
   getUsers(): Observable<Model<User>[]> {
     return this.http.get<Model<User>[]>(API_URL + '/users').pipe(
-      tap(() => this.log('fetched users')),
+      tap((data) => this.users.next(data)),
       catchError(this.handleError<Model<User>[]>('getUsers', []))
     );
   }

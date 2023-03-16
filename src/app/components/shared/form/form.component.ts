@@ -55,7 +55,7 @@ export class FormComponent implements OnInit{
     this.mostrar = !this.mostrar;
     this.cerrado.emit(!this.mostrar);
   }
-  
+
   getHeaders(): string[] {
     const headers: string[] = [];
     let control = Object.keys(this.form.controls)
@@ -98,7 +98,7 @@ export class FormComponent implements OnInit{
         }
       }
     )
-
+  this.userService.updateUsers()
   }
 
 

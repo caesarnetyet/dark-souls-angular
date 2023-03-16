@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
 import {Class} from "../interfaces/class";
 import {Character} from "../interfaces/character";
 import {Classes} from "../interfaces/classes";
-import Emittery from 'emittery';
+import {socket } from "../env/socket";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,17 @@ export class CharacterService {
   characters: BehaviorSubject<Model<Character>[]> = new BehaviorSubject<Model<Character>[]>([])
   classes: BehaviorSubject<Model<Classes>[]> = new BehaviorSubject<Model<Classes>[]>([])
 
-  constructor(private messageService: MessagesService, private http: HttpClient,private ref: ApplicationRef) {
+  constructor(private messageService: MessagesService, private http: HttpClient) {
+
+  }
+
+  listenSocket(){
+
+    socket.on('updateCharacter', (data: any) => {
+      console.log(data)
+      console.log(this)
+      this.characters.next(data)
+    })
   }
 
   getCharacters(): Observable<Model<Character>[]> {

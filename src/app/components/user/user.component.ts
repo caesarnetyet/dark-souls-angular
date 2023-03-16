@@ -5,6 +5,7 @@ import {CharacterService} from "../../services/character.service";
 import {Character} from "../../interfaces/character";
 import {socket} from "../../env/socket";
 import {API_URL} from "../../env/endpoint";
+import {MessagesService} from "../../services/messages.service";
 
 
 
@@ -20,28 +21,18 @@ export class UserComponent implements OnInit {
   characters: Model<Character>[] = []
 
   constructor(private characterService: CharacterService,
-              private cd: ChangeDetectorRef) { }
+              private cd: ChangeDetectorRef,
+              private messageService: MessagesService) { }
 
   ngOnInit(): void {
 
     this.characterService.characters.subscribe((data) => this.characters = data)
     this.characterService.updateCharacters()
-    this.listenSocket()
-
-    const eventSource = new EventSource(API_URL + '/addclass');
-
-    eventSource.addEventListener('new_class', event => {
-      console.log(event)
-    })
-  }
-
-  listenSocket( ){
-    socket.on('updateCharacter', (data: any) => {
+    this.messageService.listenSource()
+    socket.on('updateCharacter', (data: Model<Character>) => {
       console.log(data)
-      this.characterService.getCharacters().subscribe((characters) => {
-        this.characters = characters
-        this.cd.detectChanges();
-      })
+      this.characterService.updateCharacters()
+      this.cd.detectChanges()
     })
   }
 
@@ -50,6 +41,7 @@ export class UserComponent implements OnInit {
   updateCharacter($row: Model<Character>) {
     const characterIndex = this.characters.findIndex((character) => character.id === $row.id)
     this.characters[characterIndex] = $row
+
   }
 
   deleteCharacter($row: string) {
