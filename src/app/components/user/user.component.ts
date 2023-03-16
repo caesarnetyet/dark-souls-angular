@@ -4,6 +4,7 @@ import {Model} from "../../interfaces/model";
 import {CharacterService} from "../../services/character.service";
 import {Character} from "../../interfaces/character";
 import {socket} from "../../env/socket";
+import {API_URL} from "../../env/endpoint";
 
 
 
@@ -26,6 +27,12 @@ export class UserComponent implements OnInit {
     this.characterService.characters.subscribe((data) => this.characters = data)
     this.characterService.updateCharacters()
     this.listenSocket()
+
+    const eventSource = new EventSource(API_URL + '/addclass');
+
+    eventSource.addEventListener('new_class', event => {
+      console.log(event)
+    })
   }
 
   listenSocket( ){
@@ -37,7 +44,7 @@ export class UserComponent implements OnInit {
       })
     })
   }
- 
+
 
 
   updateCharacter($row: Model<Character>) {
